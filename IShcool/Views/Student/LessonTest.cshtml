@@ -1,0 +1,84 @@
+﻿@model IShcool.ViewModels.Test_Answers_VM
+@{
+    Layout = "_Layout-Student";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Lesson_Test.css">
+    <title>Test Your Information</title>
+</head>
+<body class="all-stores-page-body">
+    <div class="scroller"></div>
+    <div class="d-none">
+        <label id="getQuestion">
+            @ViewBag.Questions
+        </label>
+        <label id="getAnswers">
+            @ViewBag.ans
+        </label>
+        <label id="QuesType">
+            @ViewBag.Type
+        </label>
+        <label id="getTime">@ViewBag.Min</label>
+    </div>
+    <div class="quiz-app">
+        <div class="quiz-info">
+            <div class="category">درس : <span>@ViewBag.Title</span></div>
+            <div class="count">سؤال رقم :  <span id="questionNumber">1</span></div>
+        </div>
+        <div class="quiz-area">
+            <h2 id="showQuestion">Why We Use &lt;br&gt; Element</h2>
+        </div>
+        <div class="answers-area">
+            <div class="answer">
+                <input type="radio" class="d-none input" id="1" name="questions" />
+                <img />
+                <label for="1"></label>
+            </div>
+            <div class="answer">
+                <input type="radio" class="d-none input" id="2" name="questions" />
+                <img />
+                <label for="2"></label>
+            </div>
+            <div class="answer">
+                <input type="radio" class="d-none input" id="3" name="questions" />
+                <img />
+                <label for="3"></label>
+            </div>
+        </div>
+        <form>
+            <button type="button"
+                    id="next"
+                    class="btn my-3 contact"
+                    style="min-width: 200px;width:fit-content;">
+                السؤال التالي
+            </button>
+        </form>
+        <div class="bullets">
+            <div id="spans" class="spans">
+            </div>
+            <div class="countdown">
+                <span id="minutes" class="minutes"></span> :
+                <span id="seconds" class="seconds"></span>
+            </div>
+        </div>
+    </div>
+    <form asp-action="Result" method="post" hidden>
+        <input hidden asp-for="answers" id="storedData" />
+        <input hidden asp-for="teacherId" value="@ViewBag.TeacherId" />
+        <input hidden asp-for="url" value="@ViewBag.Url" />
+        <button type="submit" id="submit"></button>
+    </form>
+    <script src="~/js/Lesson_Test.js"></script>
+</body>
+</html>

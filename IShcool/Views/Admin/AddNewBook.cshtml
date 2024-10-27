@@ -1,0 +1,52 @@
+﻿@using The_Top_App.Models;
+@model IShcool.ViewModels.Book_VM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/register.css">
+</head>
+<body class="all-stores-page-body chapter-exam">
+    <div class="scroller"></div>
+    <div class="wrapper">
+        <form novalidate="" enctype="multipart/form-data" asp-action="AddNewBook" method="post">
+            <h1>اضـافة الكتب و المذكرات</h1>
+            <div class="input-box my-3">
+                <label asp-for="TeacherId" class="form-label">المـدرس</label>
+                <select id="teacherID2" asp-for="TeacherId" required="">
+                    @foreach (Teacher item in @ViewBag.Teachers)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="input-box my-3">
+                <label asp-for="Academy_Year" class="form-label">السنـة الـدراسيـة</label>
+                <select asp-for="Academy_Year" aria-label="Default select example">
+                    <option value="أولى ثانوي">أولى ثانوي</option>
+                    <option value="ثانية ثانوي">ثانية ثانوي</option>
+                    <option value="ثالثة ثانوي">ثالثة ثانوي</option>
+                </select>
+            </div>
+            <div class="input-box my-3">
+                <label asp-for="Title" class="form-label">عنـوان الملف</label>
+                <input id="examTitle" asp-for="Title" type="text" required autocomplete="off" />
+            </div>
+            <div class="input-box my-3">
+                <label asp-for="Task_File" class="form-label">ارفع الملف</label>
+                <input asp-for="Task_File" type="file" enctype="multipart/form-data" accept="pdf" />
+            </div>
+            <button type="submit" style="text-align:center;" class="btn cancel col-5  my-2">حفظ الملف</button>
+        </form>
+    </div>
+    <script src="~/js/Chapter_Exam.js"></script>
+</body>
+</html>

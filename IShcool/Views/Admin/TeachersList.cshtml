@@ -1,0 +1,83 @@
+﻿@using IShcool.Data
+@using The_Top_App.Models;
+@inject ApplicationDbContext _context
+@model IShcool.ViewModels.Id_VM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Student_Home_Page.css">
+    <link rel="stylesheet" href="~/css/StudentList.css">
+    <title>Student Home Page</title>
+    <style> 
+        .btn {
+            font-weight: 700 !important;
+            font-size: 1.3em !important;
+            width:100% !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroller"></div>
+
+    <div class="subject_table">
+        <div class="table_info">
+            <h4>بيـانـات المـدرسيـن</h4>
+            <div class="search">
+                <input class="searchInput" type="search" id="search" onkeyup="search()" placeholder="بحث ..." />
+                <select>
+                    <option value="1" selected>اسم المدرس</option>
+                    <option value="3">المادة</option>
+                    <option value="2">رقم التليفون</option>
+                </select>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td style="width:5%;"></td>
+                    <td style="width:20%;">اسـم المـدرس</td>
+                    <td style="width:20%;">رقـم التليفـون</td>
+                    <td style="width:20%;"> المـادة العـلميـة</td>
+                    <td style="width:20%;">عـدد الطلبـة</td>
+                    <td style="width:15%;"></td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count = 1;
+                    foreach (Teacher item in @ViewBag.Teachers)
+                    {
+                        var studentCount = _context.Enrollments.Where(m => m.TeacherId == item.Id).Count();
+
+                        <tr>
+                            <td><h3>@count</h3></td>
+                            <td><h3>@item.Name</h3></td>
+                            <td><h3>@item.Phone</h3></td>
+                            <td><h3>@item.Subject</h3></td>
+                            <td><h3>@studentCount</h3></td>
+                            <td>
+                                <form asp-action="" method="get">
+                                    <input hidden asp-for="Id" value="@item.Id" />
+                                    <button type="submit" class="btn vedio">الـدروس</button>
+                                </form>
+                            </td>
+                        </tr>
+
+                        count++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <script src="~/js/Student_List.js"></script>
+</body>
+</html>

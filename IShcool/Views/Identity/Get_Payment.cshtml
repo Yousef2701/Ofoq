@@ -1,0 +1,109 @@
+﻿@{
+    Layout = "_Layout-Identity";
+}
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/Steps.css" />
+    <style>
+        body {
+            background-color: #1e1d1a;
+            color: white;
+            direction: rtl;
+        }
+
+        .container {
+            text-align: center;
+            gap: 10px;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            flex-wrap: wrap;
+            padding-top: 100px;
+        }
+
+        .pending-message {
+            font-size: 24px;
+            color: #ffd700;
+            display: block;
+            width: 100%;
+            text-align: start;
+        }
+
+        .spinner-border {
+            color: white;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 1.3em !important;
+            font-weight: 800;
+            background-color: #FFD700;
+            color: black;
+            text-decoration: none;
+            border: 1px solid white;
+            box-shadow: 0 0 5px white;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 20px auto;
+            width: 320px;
+            transition: 0.1s ease-in-out;
+        }
+    </style>
+    <title>Payment</title>
+</head>
+<body>
+    <div class="w-100">
+        <div class="steps-container d-flex justify-content-between align-items-center">
+            <span class="step background-yellow">1</span>
+            <span class="step background-yellow">2</span>
+            <span class="step background-yellow">3</span>
+            <span class="last-step">4</span>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="pending-message">
+            يجب تصوير الفاتورة وارسالها علي الواتس اب علي الرقم الذي تمت عليه عملية
+            الدفع.
+        </h1>
+        @if (ViewBag.Subjects == null)
+        {
+            <h6>لا يوجد بيانات</h6>
+        }
+        {
+        @foreach (string sub in ViewBag.Subjects)
+        {
+            <h6> @sub</h6>
+        }
+        }
+
+        @if (ViewBag.Pachnum != null && ViewBag.Total != null)
+        {
+            <h6>@ViewBag.Pachnum</h6>
+            <h6>@ViewBag.Total</h6>
+        }
+        else
+        {
+            <h6>لا يوجد بيانات</h6>
+        }
+
+
+        <h1 class="pending-message mx-5">فودافون كاش</h1>
+        <h1 class="pending-message mx-5">01017365366</h1>
+        <h1 class="pending-message mx-5">اورانج كاش</h1>
+        <h1 class="pending-message mx-5">01204899485</h1>
+
+        <form asp-controller="Home" asp-action="Index" method="get" style="justify-content:center;">
+            <button type="submit" class="btn">عودة الى الصفحة الرئيسية</button>
+        </form>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

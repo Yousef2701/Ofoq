@@ -1,0 +1,208 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+body{
+    height:90vh;
+}
+
+main{
+    width:100%;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background: #454340;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.userimg {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 3px wheat;
+}
+
+.cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid wheat;
+}
+
+.nav_icons {
+    display: flex;
+    padding: 0;
+}
+
+    .nav_icons li {
+        display: flex;
+        list-style: none;
+        cursor: pointer;
+        color: white;
+        font-size: 1.5em;
+        margin-left: 22px;
+    }
+
+.rightSide {
+    position: relative;
+    width: 100% !important;
+    padding: 0;
+    background: #1E1D1A;
+    height: 85vh;
+    margin: 0;
+    margin-top: -20px;
+}
+
+    .rightSide::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(../Uploads/347.JPG);
+        opacity: 0.09;
+    }
+
+.imgText {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .imgText h4 {
+        font-size:1.2em;
+        font-weight: 500;
+        line-height: 1.2em;
+        margin-top:13px;
+        margin-right: 15px;
+        color: white;
+    }
+
+        .imgText h4 span {
+            font-size: 0.8em;
+            color: wheat;
+        }
+.chatBox::-webkit-scrollbar {
+    width: 10px;
+    left: 0;
+}
+
+.chatBox::-webkit-scrollbar-thumb {
+    background-color: #3B3A37;
+}
+
+.chatBox::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+.chatBox {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 120px);
+    padding: 50px;
+    overflow-y: auto;
+}
+
+.message {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin: 10px 0;
+}
+
+    .message p {
+        position: relative;
+        right: 0;
+        text-align: right;
+        max-width: 65%;
+        padding: 12px;
+        background: #005d4b;
+        border-radius: 10px;
+        font-size: 0.9em;
+        color:white;
+    }
+
+        .message p span {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.85em;
+            opacity: 0.5;
+        }
+
+.my_message {
+    justify-content: flex-start;
+}
+
+    .my_message p::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -12px;
+        width: 20px;
+        height: 20px;
+        background: linear-gradient(135deg,#005d4b 0%,#005d4b 50%,transparent 50%,transparent);
+    }
+
+.frnd_message {
+    justify-content: flex-end;
+}
+
+    .frnd_message p {
+        background: #454340;
+        text-align: left;
+    }
+
+        .frnd_message p::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -12px;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(225deg,#454340 0%,#454340 50%,transparent 50%,transparent);
+        }
+
+.chatbox_input {
+    position: relative;
+    width: 100%;
+    height: 73px;
+    background: #454340;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .chatbox_input ion-icon {
+        cursor: pointer;
+        font-size: 1.8em;
+        color: white;
+    }
+
+        .chatbox_input ion-icon:nth-child(1) {
+            margin-right: 15px;
+        }
+
+    .chatbox_input input {
+        position: relative;
+        width: 90%;
+        margin: 0 20px;
+        padding: 10px 20px;
+        border: none;
+        outline: none;
+        border-radius: 30px;
+        font-size: 1em;
+    }

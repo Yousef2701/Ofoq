@@ -1,0 +1,142 @@
+﻿@model IShcool.ViewModels.Subjects_VM
+@{
+    Layout = "_Layout-Identity";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/StudentSupscripe2.css" />
+    <link rel="stylesheet" href="~/css/Steps.css" />
+    <title>Subscripe</title>
+  </head>
+  <body class="all-stores-page-body">
+    <div class="scroller"></div>
+    <div class="w-100">
+        <div class="steps-container d-flex justify-content-between align-items-center">
+            <span class="step background-yellow">1</span>
+            <span class="step before-gray">2</span>
+            <span class="step before-gray c-gray">3</span>
+            <span class="last-step c-gray">4</span>
+        </div>
+    </div>
+    
+    <div class="big-container d-flex justify-content-around align-items-center">
+      <div class="videos-container my-4">
+        <h2>المواد</h2>
+        <div class="d-flex justify-content-around align-items-center flex-wrap w-100">
+            <div>
+                @if (ViewBag.AcademyYear == "أولى ثانوي")
+                {
+                    <p class="w-100 text-center c-wheat">سعر المادة <span>25</span> جنيه</p>
+                    <p class="w-100 text-center c-wheat">سعر الباقة المجمعة (جميع المواد)  <span>100</span> جنيه</p>
+                }
+                else if (ViewBag.AcademyYear == "ثانية ثانوي")
+                {
+                    <p class="w-100 text-center c-wheat">سعر المادة <span>35</span> جنيه</p>
+                    <p class="w-100 text-center c-wheat">سعر الباقة المجمعة (جميع المواد)  <span>150</span> جنيه</p>
+                }
+                else if (ViewBag.AcademyYear == "ثالثة ثانوي")
+                {
+                    <p class="w-100 text-center c-wheat">سعر المادة <span>50</span> جنيه</p>
+                    <p class="w-100 text-center c-wheat">سعر الباقة المجمعة (جميع المواد)  <span>200</span> جنيه</p>
+                }
+            </div>
+
+                <button id="selectAll" style="width: 250px; padding: 10px 20px; margin: 0;" type="submit" class="btn"> جميع المواد </button>
+        </div>
+        <span></span>
+        @foreach(Subject sub in ViewBag.Subjectlist) { if(sub.Name=="لغـة ثـانيـة") {
+        <div class="card">
+          <div class="image-content">
+            @*<span class="overlay"></span>*@ @if(ViewBag.SecondLang=="اللغـة الفرنسيـة") {
+            <div class="card-image">
+              <img class="card-img" src="~/Subjects/Frensh.png" />
+            </div>
+            } else if(ViewBag.SecondLang=="اللغـة الألمـانيـة") {
+            <div class="card-image">
+              <img class="card-img" src="~/Subjects/German.png" />
+            </div>
+            } else if(ViewBag.SecondLang=="اللغـة الإيطـاليـة") {
+            <div class="card-image">
+              <img class="card-img" src="~/Subjects/Italy.png" />
+            </div>
+            } else{
+            <div class="card-image">
+              <img class="card-img" src="DSC_0014.JPG" />
+            </div>
+            }
+          </div>
+          <div class="card-content">
+            <h3 style="display: none" id="subjectName">@ViewBag.SecondLang</h3>
+            <form
+              class="btn-form"
+              asp-action="Choose_Subjects"
+              method="get"
+              style="display: flex"
+            >
+              <button class="start-button">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-check-circle-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+                  />
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+        }else {
+        <div class="card">
+          <div class="image-content">
+            @*<span class="overlay"></span>*@
+
+            <div class="card-image">
+              <img class="card-img" src="~/Subjects/@sub.ImageUrl" />
+            </div>
+          </div>
+          <div class="card-content">
+            <h3 style="display: none" id="subjectName">@sub.Name</h3>
+            <form class="btn-form" asp-action="Choose_Subjects" method="get" style="display: flex" >
+              <button class="start-button"> 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16" >
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                  </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+        } }
+      </div>
+    </div>
+    <form
+      class="d-flex justify-content-center align-items-center"
+      asp-action="Choose_Teachers"
+      method="get"
+    >
+      <input type="text" class="d-none" asp-for="Subjects" id="subject" />
+      <button
+        style="width: 250px; padding: 10px 20px"
+        type="submit"
+        class="btn"
+      >
+        متابعة
+      </button>
+    </form>
+    <script src="~/js/Choose_Subjects.js"></script>
+  </body>
+</html>

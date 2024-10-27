@@ -1,0 +1,73 @@
+﻿@using IShcool.Data
+@inject ApplicationDbContext _context
+@{
+    Layout = "_Layout-Student";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+        <link rel="stylesheet" href="bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/Student_Home_Page.css">
+        <title>Student Home Page</title>
+        <link rel="stylesheet" href="~/css/Book.css" />
+    </head>
+    <body>
+        <div class="scroller"></div>
+
+        <div class="subject_table">
+            <div class="table_info">
+                <h4>الكتب و المذكرات</h4>
+                <div class="search">
+                    <input class="searchInput" type="search" id="search" onkeyup="search()" placeholder="بحث ..." />
+                    <select>
+                        <option value="1" selected>عنوان الملف</option>
+                        <option value="3">المادة</option>
+                    </select>
+                </div>
+            </div>
+            <form asp-action="Students_List" method="get">
+                <table>
+                    <thead>
+                        <tr>
+                            <td style="width:5%;"></td>
+                            <td style="width:25%;">عنوان الملف</td>
+                            <td style="width:20%;">المدرس</td>
+                            <td style="width:20%;"> المادة</td>
+                            <td style="width:30%;"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (@ViewBag.Books != null)
+                        {
+                            int count = 1;
+                            foreach (Book item in @ViewBag.Books)
+                            {
+                                var teacher = _context.Teachers.Find(item.TeacherId);
+
+                                <tr>
+                                    <td><h3>@count</h3></td>
+                                    <td><h3>@item.Title</h3></td>
+                                    <td><h3>@teacher.Name</h3></td>
+                                    <td><h3>@teacher.Subject</h3></td>
+                                    <td>
+                                        <a style="color:white;" href="~/Files/@item.FileUrl">فتح الملف</a>
+                                    </td>
+                                </tr>
+                                count++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <script src="~/js/Book.js"></script>
+    </body>
+</html>

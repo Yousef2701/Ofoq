@@ -1,0 +1,119 @@
+﻿@model IShcool.ViewModels.General_Exam_Question_VM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/register.css">
+</head>
+<body class="all-stores-page-body">
+    <div class="scroller"></div>
+    <div class="wrapper">
+        <form novalidate="" enctype="multipart/form-data" asp-action="AddGeneralExamQuestion" method="post">
+            <h1>اضـافة سـؤال جـديد</h1>
+            <div hidden class="input-box my-3">
+                <label asp-for="TeacherId" class="form-label">المـدرس</label>
+                <input asp-for="TeacherId" type="text" value="@ViewBag.TeacherId" required autocomplete="off" />
+            </div>
+            <div hidden class="input-box my-3">
+                <label asp-for="ExamTitle" class="form-label">عنـوان الامتحـان</label>
+                <input asp-for="ExamTitle" type="text" value="@ViewBag.Title" required autocomplete="off" />
+            </div>
+            <div hidden class="input-box my-3">
+                <label asp-for="Academy_Year" class="form-label">السنة الدراسية</label>
+                <input asp-for="Academy_Year" type="text" value="@ViewBag.Academy_Year" required autocomplete="off" />
+            </div>
+            <div class="input-box my-3">
+                <label asp-for="Quest" class="form-label">السـؤال</label>
+                <input asp-for="Quest" type="text" id="lessonID" required autocomplete="off" />
+            </div>
+            <div class="input-box my-3">
+                <label asp-for="Quest_Type" class="form-label">نوع الاجابات</label>
+                <select asp-for="Quest_Type" id="questionType" aria-label="Default select example">
+                    <option selected value="Text">نصوص</option>
+                    <option value="Image">صور</option>
+                </select>
+            </div>
+            <div class="Text">
+                <div class="input-box my-3">
+                    <label asp-for="Frist_Answer" class="form-label">الاجـابـة الأولـى</label>
+                    <input asp-for="Frist_Answer" type="text" required autocomplete="off" />
+                </div>
+                <div class="input-box my-3">
+                    <label asp-for="Second_Answer" class="form-label">الاجـابـة الثـانيـة</label>
+                    <input asp-for="Second_Answer" type="text" required autocomplete="off" />
+                </div>
+                <div class="input-box my-3">
+                    <label asp-for="Third_Answer" class="form-label">الاجـابـة الثـالثـة</label>
+                    <input asp-for="Third_Answer" type="text" required autocomplete="off" />
+                </div>
+                <div class="input-box my-3">
+                    <label asp-for="Forth_Answer" class="form-label">الاجـابـة الرابعة</label>
+                    <input asp-for="Forth_Answer" type="text" required autocomplete="off" />
+                </div>
+            </div>
+            <div class="Image">
+                <div class="input-box my-3">
+                    <label asp-for="Frist_Answer_File" class="form-label">الاجـابـة الاولـى</label>
+                    <input asp-for="Frist_Answer_File" type="file" enctype="multipart/form-data" accept="image/jpg" />
+                </div>
+                <div class="input-box my-3">
+                    <label asp-for="Second_Answer_File" class="form-label">الاجـابـة الثـانيـة</label>
+                    <input asp-for="Second_Answer_File" type="file" enctype="multipart/form-data" accept="image/jpg" />
+                </div>
+                <div class="input-box my-3">
+                    <label asp-for="Third_Answer_File" class="form-label">الاجـابـة الثـالثـة</label>
+                    <input asp-for="Third_Answer_File" type="file" enctype="multipart/form-data" accept="image/jpg" />
+                </div>
+                <div class="input-box my-3">
+                    <label asp-for="Forth_Answer_File" class="form-label">الاجـابـة الرابعة</label>
+                    <input asp-for="Forth_Answer_File" type="file" enctype="multipart/form-data" accept="image/jpg" />
+                </div>
+            </div>
+            <div class="input-box my-3">
+                <label asp-for="Correct_Answer" class="form-label">الاجـابـة الصحيحـة</label>
+                <select asp-for="Correct_Answer" aria-label="Default select example">
+                    <option value="1">الاجـابـة الاولـى</option>
+                    <option value="2">الاجـابـة التـانيـة</option>
+                    <option value="3">الاجـابـة الثـالثـة</option>
+                    <option value="4">الاجـابـة الرابعة</option>
+                </select>
+            </div>
+            <button type="submit" style="text-align:center;" class="btn cancel col-5  my-2">حفظ السـؤال</button>
+        </form>
+        <form asp-controller="Admin" asp-action="Index" method="get">
+            <button type="submit" style="text-align:center;" class="btn cancel col-5  my-2">انهاء</button>
+        </form>
+    </div>
+    <script src="~/js/Chapter_Exam.js"></script>
+    <script>
+        document.getElementById("questionType").onchange = () => {
+            if (document.getElementById("questionType").value == "Text") {
+                document.querySelector(".Text").style.display = "flex";
+                document.querySelector(".Image").style.display = "none";
+            }
+            if (document.getElementById("questionType").value == "Image") {
+                document.querySelector(".Text").style.display = "none";
+                document.querySelector(".Image").style.display = "flex";
+            }
+        }
+        window.onload = () => {
+            if (document.getElementById("questionType").value == "Text") {
+                document.querySelector(".Text").style.display = "flex";
+                document.querySelector(".Image").style.display = "none";
+            }
+            if (document.getElementById("questionType").value == "Image") {
+                document.querySelector(".Text").style.display = "none";
+                document.querySelector(".Image").style.display = "flex";
+            }
+        }
+    </script>
+</body>
+</html>

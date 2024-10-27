@@ -1,0 +1,61 @@
+﻿@using The_Top_App.Models;
+@model IShcool.ViewModels.Lesson_VM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/register.css">
+</head>
+<body class="all-stores-page-body create-lesson">
+    <div class="scroller"></div>
+    <div class="wrapper">
+        <form novalidate="" enctype="multipart/form-data" asp-action="AddNewLesson" method="post">
+            <h1>تـسجيـل بيـانـات الـدرس </h1>
+            <div class="input-box my-3">
+                <label asp-for="Title" class="form-label">عنـوان الـدرس</label>
+                <input asp-for="Title" type="text" id="lessonID" required autocomplete="off" />
+            </div>
+            <div class="input-box my-3">
+                <label asp-for="TeacherId" class="form-label">المـدرس</label>
+                <select asp-for="TeacherId" required="" id="teacherID">
+                    @foreach (Teacher item in @ViewBag.Teachers)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="input-box my-3">
+                <label asp-for="ChapterTitle" class="form-label">الفرع</label>
+                <select asp-for="ChapterTitle" required="" id="teacherID">
+                    @foreach (Chapter item in @ViewBag.Chapters)
+                    {
+                        <option value="@item.Title">@item.Title</option>
+                    }
+                </select>
+            </div>
+            <div class="input-box my-3">
+                <label asp-for="Academy_Year" class="form-label">السنة الدراسية</label>
+                <select id="courseSelect" asp-for="Academy_Year" aria-label="Default select example">
+                    <option value="أولى ثانوي">أولى ثانوي</option>
+                    <option value="ثانية ثانوي">ثانية ثانوي</option>
+                    <option value="ثالثة ثانوي">ثالثة ثانوي</option>
+                </select>
+            </div>
+            <div class="input-box my-3">
+                <label asp-for="VedioFile" class="form-label">فيديو الدرس</label>
+                <input asp-for="VedioFile" type="file" enctype="multipart/form-data" accept="vedio/mp4" />
+            </div>
+            <button type="submit" style="text-align:center;" class="btn cancel col-5  my-2">حفـظ بيـانـات الـدرس</button>
+        </form>
+    </div>
+    <script src="~/js/New_Lesson.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+﻿.wrapper {
+    width: 620px;
+    background: transparent;
+    border: 2px solid #FFD700;
+    box-shadow: 0 0 15px #FFD700;
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    margin-top: 80px;
+}
+
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+}
+#registerForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.wrapper .input-box {
+    position: relative;
+    width: 100%;
+}
+
+.input-box label {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #fff;
+}
+
+
+.input-box input, select {
+    width: 100%;
+    background: transparent;
+    outline: none;
+    border: 2px solid #FFD700;
+    box-shadow: 0 0 3px #FFD700;
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 7px 20px;
+}
+
+
+.input-box input::placeholder {
+    color: #BCBCBC;
+}
+
+.input-box option {
+    background-color: #1E1D1A;
+    color: white;
+    width: 50px !important;
+}
+
+.input-box option:hover {
+    background-color: #FFD700;
+    color: #1E1D1A;
+}
+
+.wrapper .btn {
+    width: 100%;
+    height: 40px;
+    background: #FFD700;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    border: 1px solid #fff;
+    box-shadow: 0 0 5px #fff;
+    cursor: pointer;
+    font-size: 1.3em;
+    color: #1E1D1A;
+    font-weight: 600;
+    transition: .5s;
+    padding: 5px;
+}
+.Image,.Text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.Image{
+    display: none;
+}
+
+h6 {
+    color: gold;
+    font-weight: 800;
+}
+@media(max-width:768px) {
+    .wrapper .input-box {
+        width: 75%;
+    }
+
+    .input-box input, select {
+        font-size: 14px;
+    }
+}

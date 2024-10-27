@@ -1,0 +1,146 @@
+﻿@model IShcool.ViewModels.Teacher_Register_VM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/register.css">
+    <style>
+        .checkbox-container {
+            position: relative;
+        }
+
+        .checkbox {
+            margin-right: 5px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 20px !important;
+            height: 20px;
+            border: 2px solid #ffd700; /* Border color for unchecked checkboxes */
+            border-radius: 4px;
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+            cursor: pointer;
+            font-weight: bolder;
+            margin: 10px;
+        }
+
+            .checkbox:checked {
+                background-color: #ffd700; /* Background color for checked checkboxes */
+                border-color: #ffd700; /* Border color for checked checkboxes */
+            }
+
+            .checkbox:after {
+                content: '\2713'; /* Checkmark character */
+                font-size: 14px;
+                color: white; /* Checkmark color for checked checkboxes */
+                font-weight: bolder;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+
+            .checkbox:checked:after {
+                opacity: 1;
+            }
+    </style>
+</head>
+<body class="all-stores-page-body">
+    <div class="scroller"></div>
+    <div class="wrapper">
+        <form novalidate="" enctype="multipart/form-data" asp-action="Teacher_Register" method="post">
+            <h1>اضـافـة مـدرس جديـد</h1>
+
+            @if (TempData["TeacherExcet"] != null)
+            {
+                <h3>@TempData["TeacherExcet"]</h3>
+            }
+            <div class="input-box my-3">
+                <label asp-for="Name" class="form-label">اسـم المـدرس</label>
+                <input asp-for="Name" type="text" id="lessonID" required autocomplete="off" />
+            </div>
+            <div class="input-box my-3">
+                <label asp-for="Phone" class="form-label">رقـم المـدرس</label>
+                <input asp-for="Phone" type="text" required autocomplete="off" />
+            </div>
+            <div class="input-box my-3">
+                <h6>يجب ان يحتوي الرقم السري على :</h6>
+                <h6>حروف (A-a)و (0-9)</h6>
+                <label asp-for="Password" class="form-label">الرقم السري</label>
+                <input asp-for="Password" type="password" required autocomplete="off" />
+            </div>
+            <div class="input-box my-3">
+                <label asp-for="ConfirmPassword" class="form-label">الرقم السري</label>
+                <input asp-for="ConfirmPassword" type="password" required autocomplete="off" />
+            </div>
+            <div class="input-box my-3">
+                <label asp-for="Subject" class="form-label">المـادة الدراسيـة</label>
+                <select asp-for="Subject" required="">
+                    <option value="لغـة عـربيـة">لغـة عربيـة</option>
+                    <option value="لغـة انجليـزيـة">لغـة إنجليـزيـة</option>
+                    <option value="اللغـة الفرنسيـة">اللغـة الفرنسيـة</option>
+                    <option value="اللغـة الألمـانيـة">اللغـة الألمـانيـة</option>
+                    <option value="اللغـة الإيطـاليـة">اللغـة الإيطـاليـة</option>
+                    <option value="ريـاضيـات">ريـاضيـات</option>
+                    <option value="ريـاضيـات تطبيقيـة">ريـاضيـات تطبيقيـة</option>
+                    <option value="ريـاضيـات بحتـة">ريـاضيـات بحتـة</option>
+                    <option value="فيـزيـاء">فيـزيـاء</option>
+                    <option value="كيـميـاء">كيميـاء</option>
+                    <option value="أحـيـاء">أحيـاء</option>
+                    <option value="جيـولـوجيـا">جيـولـوجيـا</option>
+                    <option value="جغـرافيـا">جغـرافيـا</option>
+                    <option value="تـاريـخ">تاريـخ</option>
+                    <option value="علـم نفـس">علـم نفـس</option>
+                    <option value="فـلسفـة">فلسفـة</option>
+                </select>
+            </div>
+            <div class="input-box my-3 d-flex flex-wrap">
+                <label class="form-label w-100">السنة الدراسية</label>
+                <label asp-for="First" class="checkbox-container d-flex justify-content-start align-items-center">
+                    <input asp-for="First" type="text" class="d-none" />
+                    <input type="checkbox" name="checkbox1" class="checkbox" />
+                    <h3>اولي ثانوي</h3>
+                </label>
+                <label asp-for="Second" class="checkbox-container d-flex justify-content-start align-items-center">
+                    <input asp-for="Second" type="text" class="d-none" />
+                    <input type="checkbox" name="checkbox2" class="checkbox" />
+                    <h3>ثانية ثانوي</h3>
+                </label>
+                <label asp-for="Third" class="checkbox-container d-flex justify-content-start align-items-center">
+                    <input asp-for="Third" type="text" class="d-none" />
+                    <input type="checkbox" name="checkbox3" class="checkbox" />
+                    <h3>ثالثة ثانوي</h3>
+                </label>
+            </div>
+            <div class="input-box my-3">
+                <label asp-for="ImageFile" class="form-label">صـورة المدرس</label>
+                <input asp-for="ImageFile" type="file" enctype="multipart/form-data" accept="image/jpg" />
+            </div>
+            <button type="submit" style="text-align:center;" class="btn cancel col-5  my-2">اضـافـة المـدرس</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const checkboxes = document.querySelectorAll(".checkbox");
+            checkboxes.forEach(checkbox => {
+                checkbox.previousElementSibling.value = checkbox.checked;
+                checkbox.addEventListener("change", () => {
+                    checkbox.previousElementSibling.value = checkbox.checked;
+                });
+            });
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Student_Home_Page.css">
+    <title>Student Home Page</title>
+    <style>
+        .card {
+            width: 16em;
+            height: 10em;
+            border-radius: 28px;
+            margin: 30px;
+        }
+
+            .card h3 {
+                font-weight: 700;
+                font-size: 1.6em !important;
+            }
+    </style>
+</head>
+<body>
+    <div class="scroller"></div>
+    <div class="paths">
+        <div class="content">
+            <form asp-action="StudentList" method="get">
+                <button type="submit" class="card">
+                    <h3>قـائمـة بيـانـات الطلبـة</h3>
+                </button>
+            </form>
+            <form asp-action="TeachersList" method="get">
+                <button type="submit" class="card">
+                    <h3>قـائمـة بيـانـات المدرسيـن</h3>
+                </button>
+            </form>
+            <form asp-controller="Identity" asp-action="Teacher_Register" method="get">
+                <button type="submit" class="card">
+                    <h3>اضـافـة بيـانـات مـدرس جديـد</h3>
+                </button>
+            </form>
+            <form asp-action="AddNewChapter" method="get">
+                <button type="submit" class="card">
+                    <h3>اضافة فروع المواد</h3>
+                </button>
+            </form>
+            <form asp-action="AddNewLesson" method="get">
+                <button type="submit" class="card">
+                    <h3>اضـافـة درس جديـد</h3>
+                </button>
+            </form>
+            <form asp-action="AddNewGeneralExam" method="get">
+                <button type="submit" class="card">
+                    <h3>اضـافـة امتحـان شـامـل</h3>
+                </button>
+            </form>
+            <form asp-action="AddNewBook" method="get">
+                <button type="submit" class="card">
+                    <h3>اضـافـة الكتب و المذكرات</h3>
+                </button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

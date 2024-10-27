@@ -1,0 +1,88 @@
+﻿@using IShcool.Data
+@inject ApplicationDbContext _context
+@{
+    Layout = "_Layout-Parent";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Student_Home_Page.css">
+    <title>Student Home Page</title>
+    <link rel="stylesheet" href="~/css/Attendance.css">
+</head>
+<body>
+    <div class="scroller"></div>
+    <div class="subject_table">
+        <div class="table_info">
+            <h4>سجل الحضور و الغياب للطالب  :- <span>@ViewBag.Student.Name</span></h4>
+            <h4>مادة  :- <span>@ViewBag.Subject</span></h4>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td style="width:5%;"></td>
+                    <td style="width:19%;">الدرس</td>
+                    <td style="width:19%;">موعد نزول الدرس</td>
+                    <td style="width:19%;">موعد حضور الطالب للدرس</td>
+                    <td style="width:19%;">الدرجة الكليه للاختبار</td>
+                    <td style="width:19%;">درجة الطالب</td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count = 1;
+                    string id = ViewBag.Student.Id;
+                    foreach (Lesson item in @ViewBag.Lessons)
+                    {
+                        var check = _context.LTestResults.Where(m => m.Vedio_Url == item.Vedio_Url & m.StudentId == id).FirstOrDefault();
+                        if(check == null)
+                        {
+                            int Qcount = _context.LessonsTest.Where(m => m.Vedio_Url == item.Vedio_Url).Count();
+
+                            <tr>
+                                <td><h3>@count</h3></td>
+                                <td><h3>@item.Title</h3></td>
+                                <td><h3>@item.Date</h3></td>
+                                <td><h3>لم يحضر بعد</h3></td>
+                                <td><h3>@Qcount</h3></td>
+                                <td><h3>-</h3></td>
+                            </tr>
+                            count++;
+                        }
+                        else
+                        {
+                            foreach (LTestResult i in @ViewBag.Tests)
+                            {
+                                if (i.Vedio_Url == item.Vedio_Url)
+                                {
+                                    int Qcount = _context.LessonsTest.Where(m => m.Vedio_Url == item.Vedio_Url).Count();
+
+                                    <tr>
+                                        <td><h3>@count</h3></td>
+                                        <td><h3>@item.Title</h3></td>
+                                        <td><h3>@item.Date</h3></td>
+                                        <td><h3>@i.Date</h3></td>
+                                        <td><h3>@Qcount</h3></td>
+                                        <td><h3>@i.Correct_Answers_No</h3></td>
+                                    </tr>
+                                    count++;
+                                }
+                            }
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

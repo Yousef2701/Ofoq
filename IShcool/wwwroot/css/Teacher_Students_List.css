@@ -1,0 +1,123 @@
+﻿main {
+    width: 100%;
+}
+
+.table_info h4 {
+    font-size: 1.3em !important;
+    margin-right: 25px !important;
+    color: gold;
+    margin-top: 10px;
+}
+
+tbody tr td h3 {
+    font-size: 1.2em !important;
+    margin-top: 7px !important;
+}
+
+tbody td {
+    border-bottom: 2px solid #ffd700;
+}
+
+.btn {
+    font-weight: 700 !important;
+    font-size: 1.1em !important;
+    padding: 5px 15px !important;
+}
+
+.checkbox-container {
+    position: relative;
+}
+
+.checkbox {
+    margin-right: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px !important;
+    height: 20px;
+    border: 2px solid #ffd700; /* Border color for unchecked checkboxes */
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    font-weight: bolder;
+    margin: 10px;
+}
+
+    .checkbox:checked {
+        background-color: #ffd700; /* Background color for checked checkboxes */
+        border-color: #ffd700; /* Border color for checked checkboxes */
+    }
+
+    .checkbox:after {
+        content: '\2713'; /* Checkmark character */
+        font-size: 14px;
+        color: white; /* Checkmark color for checked checkboxes */
+        font-weight: bolder;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .checkbox:checked:after {
+        opacity: 1;
+    }
+
+.search {
+    margin-top: 30px;
+    width: 80%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.searchInput {
+    height: 40px;
+    width: 100%;
+    border: 1px solid #FFD700;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background: transparent;
+    color: white !important;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.search select {
+    width: 25%;
+    height: 40px;
+    background: transparent;
+    outline: none;
+    border: 1px solid #FFD700;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: none;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 20px;
+}
+
+.search option {
+    background: #1e1d1a;
+}
+
+    .search option:hover {
+        background-color: #FFD700 !important;
+        color: #1E1D1A !important;
+    }
+
+.searchInput::placeholder {
+    color: white;
+}
+
+.searchInput:focus {
+    outline: none;
+}

@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "_Layout-Student";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MCQ Exam Result</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Test_Result.css">
+</head>
+<body>
+    <h6 id="data" class="d-none">
+        @ViewBag.Logic
+    </h6>
+    <div class="container big-cot">
+        <div class="degree-container">
+            <h1>نتيجة الامتحان</h1>
+            <p><strong>الدرجة:</strong><span id="degree"></span></p>
+            <!-- Replace with the actual degree or score -->
+        </div>
+
+        <div id="questions-container"></div>
+    </div>
+    <script src="~/js/Test_Result.js"></script>
+</body>
+</html>

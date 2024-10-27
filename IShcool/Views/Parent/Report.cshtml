@@ -1,0 +1,80 @@
+﻿@using IShcool.Data
+@using Test.Models;
+@inject ApplicationDbContext _context
+@model IShcool.ViewModels.Report_VM
+@{
+    Layout = "_Layout-Parent";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Student_Home_Page.css">
+    <title>Student Home Page</title>
+    <link rel="stylesheet" href="~/css/Report.css">
+</head>
+<body>
+    <div class="scroller"></div>
+
+    <div class="subject_table">
+        <div class="table_info">
+            <h4>الطالب :- <span>@ViewBag.Student.Name</span></h4>
+            <h4>السنة الدراسية :- <span>@ViewBag.Student.Grade</span></h4>
+            <h4>الشعبة :- <span>@ViewBag.Student.Department</span></h4>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td style="width:7%;"></td>
+                    <td style="width:27%;">المدرس</td>
+                    <td style="width:24%;">المادة</td>
+                    <td style="width:20%;"></td>
+                    <td style="width:22%;"></td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count = 1;
+                    foreach (Enrollment item in @ViewBag.Subjects)
+                    {
+
+                        var teacher = _context.Teachers.Find(item.TeacherId);
+
+                        <tr>
+                            <td><h3>@count</h3></td>
+                            <td><h3>@teacher.Name</h3></td>
+                            <td><h3>@item.Subject</h3></td>
+                            <td>
+                                <form asp-action="Attendance" method="get">
+                                    <input hidden asp-for="Student_Id" value="@ViewBag.Student.Id" />
+                                    <input hidden asp-for="Teacher_Id" value="@teacher.Id" />
+                                    <input hidden asp-for="Subject" value="@item.Subject" />
+                                    <button type="submit" class="btn vedio">الحضور و الغياب</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form asp-action="GeneralExamReport" method="get">
+                                    <input hidden asp-for="Student_Id" value="@ViewBag.Student.Id" />
+                                    <input hidden asp-for="Teacher_Id" value="@teacher.Id" />
+                                    <input hidden asp-for="Subject" value="@item.Subject" />
+                                    <button type="submit" class="btn vedio">الامتحانات الشاملة</button>
+                                </form>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

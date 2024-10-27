@@ -1,0 +1,61 @@
+﻿@{
+    Layout = "_Layout-Teacher";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Student_Home_Page.css">
+    <title>Student Home Page</title>
+    <style>
+        .card {
+            width: 18em;
+            height: 10em;
+            border-radius: 28px;
+            margin: auto 25px;
+        }
+
+            .card h3 {
+                font-weight: 700;
+                font-size: 1.6em !important;
+            }
+
+        .frm {
+            margin: 25px;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroller"></div>
+    <div class="paths">
+        <div class="content">
+            <form class="frm" asp-action="StudentsList" method="get">
+                <button type="submit" class="card">
+                    <h3>كشف الطلبة</h3>
+                </button>
+            </form>
+            <form class="frm" asp-action="LessonsList" method="get">
+                <button type="submit" class="card">
+                    <h3>بيان الدروس</h3>
+                </button>
+            </form>
+            <form class="frm" asp-action="GeneralExamsList" method="get">
+                <button type="submit" class="card">
+                    <h3>الامتحانات الشاملة</h3>
+                </button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

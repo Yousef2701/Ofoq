@@ -1,0 +1,85 @@
+﻿@{
+    Layout = "_Layout-Teacher";
+}
+
+@using IShcool.Data
+@using The_Top_App.Models;
+@inject ApplicationDbContext _context
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Student_Home_Page.css">
+    <title>Student Home Page</title>
+    <link rel="stylesheet" href="~/css/Teacher_Students_List.css">
+</head>
+<body>
+    <div class="scroller"></div>
+
+    <div class="subject_table">
+        <div class="table_info">
+            <h4>امتحان : <span>@ViewBag.Exam.Title</span></h4>
+            <h4>السنة الدراسية : <span>@ViewBag.Exam.Academy_Year</span></h4>
+            <h4>موعد نزول الامتحان : <span>@ViewBag.Exam.Date</span></h4>
+            <h4>الدرجة الكلية للامتحان : <span>@ViewBag.QuestNum</span></h4>
+            <div class="search">
+                <input class="searchInput" type="search" id="search" onkeyup="search()" placeholder="بحث ..." />
+                <select>
+                    <option value="1" selected>اسم الطالب</option>
+                </select>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td style="width:15%;"></td>
+                    <td style="width:30%;">اسم الطالب</td>
+                    <td style="width:30%;">موعد حضور الامتحان</td>
+                    <td style="width:25%;">درجة الطالب في الامتحان</td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count = 1;
+                    foreach (Student item in @ViewBag.Students)
+                    {
+                        string title = ViewBag.Exam.Title;
+                        string teacherId = ViewBag.Exam.TeacherId;
+
+                        var stdTest = _context.GeneralExamResults.Where(m => m.StudentId == item.Id & m.ExamTitle == title & m.TeacherId == teacherId).FirstOrDefault();
+                        if (stdTest != null)
+                        {
+                            <tr>
+                                <td><h3>@count</h3></td>
+                                <td><h3>@item.Name</h3></td>
+                                <td><h3>@stdTest.Date</h3></td>
+                                <td><h3>@stdTest.Correct_Answers_No</h3></td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td><h3>@count</h3></td>
+                                <td><h3>@item.Name</h3></td>
+                                <td><h3>لم يحضر الدرس بعد</h3></td>
+                                <td><h3>-</h3></td>
+                            </tr>
+                        }
+
+                        count++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <script src="~/js/Teacher_Students_List.js"></script>
+</body>
+</html>

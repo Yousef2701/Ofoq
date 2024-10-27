@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - The_Top_App</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/The_Top_App.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="shortcut icon" href="~/4.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@200;400;600;800;900;1000&family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/Layout.css">
+</head>
+<body>
+    <header style="padding: 10px; justify-content: space-between;padding-right:270px;padding-left:270px;">
+        @*<a class="logo" asp-controller="StudentArea" asp-action="Home_Page"></a>*@
+        <img src="~/Uploads/5.png" style="height: 50px;" />
+        <div class="d-flex justify-content-end align-items-center flex-wrap">
+            <nav class="navigation">
+                <a asp-controller="Teacher" asp-action="StudentsList">كشف الطلبة</a> 
+            </nav>
+            <nav class="navigation">
+                <a asp-controller="Teacher" asp-action="LessonsList">بيان الدروس</a>
+            </nav>
+            <nav class="navigation">
+                <a asp-controller="Teacher" asp-action="GeneralExamsList">الامتحانات الشاملة</a>
+            </nav>
+            <partial name="_LoginPartial" />
+        </div>
+    </header>
+
+    <main role="main" class="pb-3" style="margin-top:95px;width: 100% !important; display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
+        @RenderBody()
+    </main>
+
+
+    @*<footer class="border-top footer text-muted">
+    <div class="container">
+    &copy; 2024 - The_Top_App - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+    </footer>*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

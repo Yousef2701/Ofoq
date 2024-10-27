@@ -1,0 +1,50 @@
+﻿@page
+@using IShcool.Areas.Identity.Pages.Account
+@model LoginModel
+
+@{
+    ViewData["Title"] = "تسجيل الدخول";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/register.css">
+    <style>
+        h6 {
+            color: gold;
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body class="all-stores-page-body">
+    <div class="scroller"></div>
+    <div class="wrapper">
+        <form id="account" method="post">
+            <h1>تسجيل الدخول</h1>
+            @if (TempData["Invalid Number"] != null)
+            {
+                <h6>@TempData["Invalid Number"]</h6>
+            }
+            <div class="input-box my-3">
+                <label asp-for="Input.Email" class="form-label">رقم الموبايل</label>
+                <input asp-for="Input.Email" type="text" id="lessonID" maxlength="11" placeholder="01xxxxxxxxx" autocomplete="off" />
+            </div>
+            <div class="input-box my-3">
+                <label asp-for="Input.Password" class="form-label">كلمة المرور </label>
+                <input asp-for="Input.Password" type="password" minlength="8" placeholder="يجب ادخال 8 ارقام على الأقل" required autocomplete="off" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <button type="submit" style="text-align:center;" class="btn cancel col-5  my-2">تسجيل الدخول</button>
+        </form>
+    </div>
+</body>
+</html>

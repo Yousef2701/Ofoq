@@ -1,0 +1,44 @@
+﻿@model IShcool.ViewModels.Parent_Login_VM
+@{
+    Layout = "_Layout-Identity";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+        <link rel="stylesheet" href="bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/register.css">
+    </head>
+    <body class="all-stores-page-body register">
+        <div class="scroller"></div>
+        <div class="wrapper">
+            <form id="registerForm" asp-action="Report" method="get">
+                <h1>تسجيل دخول ولي الأمر</h1>
+
+                <div class="input-box my-3">
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                    }
+
+                    <div class="input-box my-3">
+                        <label asp-for="StudentPhone" class="form-label">رقم الطالب</label>
+                        <input asp-for="StudentPhone" type="text" required placeholder="01xxxxxxxxx" autocomplete="off" />
+                    </div>
+                    <div class="input-box my-3">
+                        <label asp-for="ParentPhone" class="form-label">رقم ولي الأمر</label>
+                        <input asp-for="ParentPhone" type="text" required placeholder="01xxxxxxxxx" autocomplete="off" />
+                    </div>
+
+                    <button type="submit" style="text-align:center;" class="btn cancel col-5  my-2">تسجيل الدخول</button>
+            </form>
+        </div>
+    </body>
+</html>

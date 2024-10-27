@@ -1,0 +1,60 @@
+﻿@model IShcool.ViewModels.Subject_Name_VM
+@using Test.Models;
+
+@{
+    Layout = "_Layout-Student";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Student_Subjects.css">
+    <title>Subjects</title>
+</head>
+<body>
+    <div class="scroller"></div>
+    <div class="paths">
+        <h2>المواد الدراسية</h2>
+        <div class="content">
+            @foreach (Subject item in @ViewBag.Subjects)
+            {
+                foreach (Enrollment sub in @ViewBag.MySubjects)
+                {
+                    if (item.Name == sub.Subject)
+                    {
+                        <form asp-action="TeacherPage">
+                            <input hidden value="@item.Name" asp-for="name" />
+                            <button type="submit" class="card">
+                                <h3>@item.Name</h3>
+                            </button>
+                        </form>
+                        break;
+                    }
+
+                    if (item.Name == "لغـة ثـانيـة")
+                    {
+                        if (sub.Subject == "اللغـة الفرنسيـة" || sub.Subject == "اللغـة الألمـانيـة" || sub.Subject == "اللغـة الإيطـاليـة")
+                        {
+                            <form asp-action="TeacherPage">
+                                <input hidden value="@ViewBag.SecondLanguage" asp-for="name" />
+                                <button type="submit" class="card">
+                                    <h3>@ViewBag.SecondLanguage</h3>
+                                </button>
+                            </form>
+                        }
+                        break;
+                    }
+                }
+            }
+        </div>
+    </div>
+</body>
+</html>

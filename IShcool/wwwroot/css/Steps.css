@@ -1,0 +1,48 @@
+﻿
+.steps-container {
+    width: 340px;
+    margin: 50px auto;
+}
+
+.step,
+.last-step {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #FFD700;
+    border: 2px solid #FFD700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+    .step::before {
+        content: "";
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        transform: translate(0, -50%);
+        height: 2px;
+        width: calc((300px - (28px * 4)) / 3);
+        background-color: #FFD700;
+    }
+
+.background-yellow {
+    background: #FFD700;
+}
+
+.c-gray {
+    color: #adb5bd;
+    border: 2px solid #adb5bd;
+}
+
+.before-gray::before {
+    background: #adb5bd;
+}
+
+.c-wheat {
+    color: wheat;
+}

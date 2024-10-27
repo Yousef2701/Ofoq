@@ -1,0 +1,74 @@
+﻿@using The_Top_App.Models;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Student_Home_Page.css">
+    <title>Student Home Page</title>
+    <style>
+        main {
+            width: 100%;
+        }
+
+        .table_info h4 {
+            font-size: 1.6em !important;
+            margin-right: 25px !important;
+        }
+
+        tbody tr td h3 {
+            font-size: 1.3em !important;
+            margin-top: 7px !important;
+        }
+
+        tbody td {
+            border-bottom: 2px solid #ffd700;
+        }
+
+        .btn {
+            font-weight: 700 !important;
+            font-size: 1.3em !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroller"></div>
+
+    <div class="subject_table">
+        <div class="table_info">
+            <h4>كشف اشتراك الطالب</h4>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td style="width:20%;"></td>
+                    <td style="width:40%;">اسـم المـدرس</td>
+                    <td style="width:40%;">المـادة</td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count = 1;
+                    foreach (Teacher item in @ViewBag.Teachers)
+                    {
+                        <tr>
+                            <td><h3>@count</h3></td>
+                            <td><h3>@item.Name</h3></td>
+                            <td><h3>@item.Subject</h3></td>
+                        </tr>
+
+                        count++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿.paths {
+    font-family: 'Scheherazade', serif;
+    position: relative;
+    width: 100%;
+    background-color: #1E1D1A;
+    padding-top: 25px;
+}
+
+    .paths h2 {
+        margin: 25px auto;
+        color: #FFD700;
+        font-size: 2.6em;
+        font-weight: 800;
+        text-align: center;
+    }
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #3B3A37 !important;
+    width: 10em;
+    height: 10em;
+    box-shadow: 0 0 8px #FFD700;
+    border-radius: 50%;
+    border: 1px solid #FFD700;
+    padding: 10px;
+    margin: 25px 20px;
+    transition: 0.7s ease;
+}
+
+    .card:hover {
+        transform: scale(1.1);
+    }
+
+    .card h3 {
+        margin: auto;
+        color: #FFD700;
+        font-size: 1.4em;
+        font-weight: 600;
+    }
+
+    .card p {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+        color: #FFD700;
+        font-size: 1.8em;
+        font-weight: 400;
+    }

@@ -1,0 +1,353 @@
+﻿@{
+    Layout = "_Layout-Student";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MCQ Exam Result</title>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/Lesson_Test.css">
+    </head>
+    <body>
+        <div class="container big-cot">
+            <div class="degree-container">
+                <h1>نتيجة الامتحان</h1>
+                <p><strong>الدرجة:</strong> @ViewBag.Count / @ViewBag.Correct</span></p>
+                <!-- Replace with the actual degree or score -->
+            </div>
+            <div class="quiz-app" style="width:100%;">
+            @{
+                string[] ans = ViewBag.Answers;
+                int count = 0;
+
+                foreach (GeneralExamQuestion item in @ViewBag.Questions)
+                {
+                    string i = ans[count];
+                    <div class="quiz-area">
+                        <h2 id="showQuestion">@item.Quest</h2>
+                    </div>
+                    if (item.Quest_Type == "Text")
+                    {
+                        <div class="answers-area w-100 d-flex flex-wrap">
+                            @{
+                                string q0 = item.Quest + "0";
+                                string q1 = item.Quest + "1";
+                                string q2 = item.Quest + "2";
+                                string q3 = item.Quest + "3";
+                                string q4 = item.Quest + "4";
+
+                                if(item.Correct_Answer == "1")
+                                {
+                                    if(i == "0")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none choose" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if(i == "1")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100 correct choose" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if(i == "2")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100 choose" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if(i == "3")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100 choose" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if(i == "4")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100 choose" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                }
+                                else if (item.Correct_Answer == "2")
+                                {
+                                    if (i == "0")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none choose" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if (i == "1")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100 choose" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if (i == "2")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100 choose correct" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if (i == "3")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100 choose" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if (i == "4")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100 choose" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                }
+                                else if (item.Correct_Answer == "3")
+                                {
+                                    if (i == "0")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none choose" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if (i == "1")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100 choose" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if (i == "2")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100 choose" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if (i == "3")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100 choose correct" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if (i == "4")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100 choose" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                }
+                                else if (item.Correct_Answer == "4")
+                                {
+                                    if (i == "0")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none choose" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if (i == "1")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100 choose" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if (i == "2")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100 choose" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if (i == "3")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100 choose" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100 correct" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                    else if (i == "4")
+                                    {
+                                        <input type="radio" checked class="d-none input" id="@q0" name="@item.Quest" />
+                                        <label class="answer w-100 d-none" for="@q0"></label>
+                                        <input type="radio" class="d-none input" id="@q1" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q1">@item.Frist_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q2" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q2">@item.Second_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q3" name="@item.Quest" />
+                                        <label class="answer w-100" for="@q3">@item.Third_Answer</label>
+                                        <input type="radio" class="d-none input" id="@q4" name="@item.Quest" />
+                                        <label class="answer w-100 choose correct" for="@q4">@item.Forth_Answer</label>
+                                    }
+                                }                           
+                            }
+                        </div>
+                    }
+                    else if (item.Quest_Type == "Image")
+                    {
+                        <div class="answers-area">
+                            @{
+                                string q1 = item.Quest + "1";
+                                string q2 = item.Quest + "2";
+                                string q3 = item.Quest + "3";
+                                string q4 = item.Quest + "4";
+                                <div class="answer">
+                                    <input type="radio" class=" input" id="@q1" name="@item.Quest" />
+                                    <img src="~/AnswersImages/@item.Frist_Answer_Url" />
+                                </div>
+                                <div class="answer">
+                                    <input type="radio" class=" input" id="@q2" name="@item.Quest" />
+                                    <img src="~/AnswersImages/@item.Second_Answer_Url" />
+                                </div>
+                                <div class="answer">
+                                    <input type="radio" class=" input" id="@q3" name="@item.Quest" />
+                                    <img src="~/AnswersImages/@item.Third_Answer_Url" />
+                                </div>
+                                <div class="answer">
+                                    <input type="radio" class=" input" id="@q4" name="@item.Quest" />
+                                    <img src="~/AnswersImages/@item.Forth_Answer_Url" />
+                                </div>
+                            }
+                        </div>
+                    }
+                    count++;
+                }
+            }
+            </div>
+        </div>
+
+        <script src="~/js/General_Exam_Result.js"></script>
+    </body>
+</html>

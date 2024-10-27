@@ -1,0 +1,143 @@
+﻿.subject_table::-webkit-scrollbar {
+    height: 10px;
+    bottom: 0;
+}
+
+.subject_table::-webkit-scrollbar-thumb {
+    background-color: #3B3A37;
+}
+
+.subject_table::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+.paths {
+    position: relative;
+    width: 100%;
+    background-color: #1E1D1A;
+    padding-top: 25px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #3B3A37 !important;
+    width: 13em;
+    height: 8.3em;
+    box-shadow: 0 0 8px #FFD700;
+    border-radius: 10px;
+    border: 1px solid #FFD700;
+    padding: 25px;
+    margin: 25px 20px;
+    transition: 0.7s ease;
+}
+
+    .card:hover {
+        transform: scale(1.1);
+    }
+
+    .card h3 {
+        margin: auto;
+        color: #FFD700;
+        font-size: 1.4em;
+        font-weight: 500;
+    }
+
+    .card p {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+        color: #FFD700;
+        font-size: 1.5em;
+        font-weight: 400;
+    }
+
+.subject_table {
+    width: 90%;
+    margin: 25px auto;
+    background-color: #3B3A37;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #FFD700;
+    border: 1px solid #FFD700;
+    overflow-x: scroll;
+}
+
+.table_info {
+    border-bottom: 1px solid #FFD700;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+    .table_info h4 {
+        color: white;
+        font-size: 1.4em;
+        font-weight: 700;
+        padding-right: 15px;
+    }
+
+.subject_table h3 {
+    color: white;
+    font-size: 1.6em;
+    font-weight: 600;
+    padding-right: 25px;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    margin: 15px auto;
+    padding: 10px;
+}
+
+thead td {
+    font-size: 1em;
+    font-weight: 700;
+    background-color: #1E1D1A;
+    color: white;
+    padding: 8px;
+    text-align: center;
+}
+
+tbody td {
+    font-size: 1.12em;
+    font-weight: 500;
+    padding: 8px;
+    text-align: center;
+    border-bottom: 2px solid #1E1D1A;
+    color: #202020;
+}
+
+    tbody td form {
+        height: 100%;
+    }
+
+    tbody td .btn {
+        height: 100%;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid white;
+        transition: .3s;
+        cursor: pointer;
+        box-shadow: 0 0 4px white;
+    }
+
+.vedio {
+    background-color: #FFD700;
+    color: #1E1D1A;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+.live {
+    background-color: #CC0000;
+    color: white;
+    font-size: 0.88em;
+    font-weight: 700;
+}
+

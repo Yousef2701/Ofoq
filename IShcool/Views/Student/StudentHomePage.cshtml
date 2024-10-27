@@ -1,0 +1,171 @@
+﻿@{
+    Layout = "_Layout-Student";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Student_Home_Page.css">
+    <title>Student Home Page</title>
+</head>
+<body>
+    <div class="scroller"></div>
+    <div class="paths">
+        <div class="content">
+            <form asp-action="ChooseLessonSubject">
+                <button type="submit" class="card">
+                    <p class="card-text d-flex align-items-baseline">
+                        <i class="mx-1 fas fa-chalkboard-teacher"></i>
+                    </p>
+                    <h3>الدروس</h3>
+                </button>
+            </form>
+            <form asp-action="ChooseBanqSubject" method="get">
+                <button type="submit" class="card">
+                    <p class="card-text d-flex align-items-baseline">
+                        <i class="mx-1 fas fa-chalkboard-teacher"></i>
+                    </p>
+                    <h3>بنك الأسئلة</h3>
+                </button>
+            </form>
+            <form asp-action="Books" method="get">
+                <button type="submit" class="card">
+                    <p class="card-text d-flex align-items-baseline">
+                        <i class="mx-1 fas fa-chalkboard-teacher"></i>
+                    </p>
+                    <h3>المذكرات و الكتب</h3>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="subject_table">
+        <div class="table_info">
+            <h4>الجـدول الأسبوعـي</h4>
+        </div>
+        <h3>23 - 29 <span>ديسمبر</span> 2023</h3>
+        <table>
+            <thead>
+                <tr>
+                    <td style="width:15%;">السبت <br /><span>23</span> ديسمبر</td>
+                    <td style="width:15%;">الأحد <br /><span>24</span> ديسمبر</td>
+                    <td style="width:15%;">الإثنين <br /><span>25</span> ديسمبر</td>
+                    <td style="width:15%;">الثلاثاء <br /><span>26</span> ديسمبر</td>
+                    <td style="width:15%;">الأربع <br /><span>27</span> ديسمبر</td>
+                    <td style="width:15%;">الخميس <br /><span>28</span> ديسمبر</td>
+                    <td style="width:10%;">الجمعة <br /><span>29</span> ديسمبر</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn vedio">أحياء</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn vedio">لغة عربية</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn vedio">جيولوجيا</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn live"> لغة فرنسية - 11 ص</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn vedio">كيمياء</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn vedio">فيزياء</button>
+                        </form>
+                    </td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn live"> تفاضل - 6 م</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn vedio">لغة ألمانية</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn live"> حساب مثلثات - 2 م </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn vedio">فيزياء </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn vedio">هندسة</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn vedio">لغة عربية</button>
+                        </form>
+                    </td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn vedio">لغة انجليزية</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn vedio">جيولوجيا</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn vedio">لغة ايطالية</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn vedio">أحياء</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn vedio">لأغة عربية</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <button type="submit" class="btn live"> كيمياء - 9 ص</button>
+                        </form>
+                    </td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
