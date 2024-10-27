@@ -15,22 +15,34 @@
     <link rel="stylesheet" href="~/css/Layout.css">
 </head>
 <body>
-    <header style="padding: 10px; justify-content: space-between;padding-right:270px;padding-left:270px;">
-        @*<a class="logo" asp-controller="StudentArea" asp-action="Home_Page"></a>*@
-            <img src="~/Uploads/5.png" style="height: 50px;" />
-            <div class="d-flex justify-content-end align-items-center flex-wrap">
-            <nav class="navigation">
-                <a asp-controller="Student" asp-action="ChooseLessonSubject">الدروس</a>
-            </nav>
-            <nav class="navigation">
-                <a asp-controller="Student" asp-action="ChooseBanqSubject">بنك الأسئلة</a>
-            </nav>
-            <nav class="navigation">
-                <a asp-controller="Student" asp-action="Books">المذكرات و الكتب</a>
-            </nav>
-            <partial name="_LoginPartial" />
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="logo" asp-controller="Home" asp-action="Index">
+                <img src="~/Uploads/5.png" style="height: 50px;" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+                </svg>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Student" asp-action="ChooseLessonSubject">الدروس</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Student" asp-action="ChooseBanqSubject">بنك الأسئلة</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Student" asp-action="Books">المذكرات و الكتب</a>
+                    </li>
+                    <partial name="_LoginPartial" />
+                </ul>
+            </div>
         </div>
-    </header>
+        
+    </nav>
+    
 
     <main role="main" class="pb-3" style="margin-top:95px;width: 100% !important; display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
         @RenderBody()
@@ -45,6 +57,11 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

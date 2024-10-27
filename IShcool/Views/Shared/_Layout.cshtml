@@ -15,12 +15,13 @@
     <link rel="stylesheet" href="~/css/Layout.css">
 </head>
 <body>
-    <header style="padding: 10px; justify-content: space-around;">
-        @*<a class="logo" asp-controller="StudentArea" asp-action="Home_Page"></a>*@
+    <nav class="navbar navbar-expand-md">
+        <a class="logo" asp-controller="Home" asp-action="Index">
             <img src="~/Uploads/5.png" style="height: 50px;" />
+        </a>  
         
         <partial name="_LoginPartial" />
-    </header>
+    </nav>
 
     <main role="main" class="pb-3" style="margin-top:95px;width: 100% !important; display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
         @RenderBody()
@@ -35,6 +36,9 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
