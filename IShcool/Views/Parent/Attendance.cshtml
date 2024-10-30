@@ -46,7 +46,7 @@
                         var check = _context.LTestResults.Where(m => m.Vedio_Url == item.Vedio_Url & m.StudentId == id).FirstOrDefault();
                         if(check == null)
                         {
-                            int Qcount = _context.LessonsTest.Where(m => m.Vedio_Url == item.Vedio_Url).Count();
+                            int Qcount = _context.LessonQuestions.Where(m => m.Vedio_Url == item.Vedio_Url).Count();
 
                             <tr>
                                 <td><h3>@count</h3></td>
@@ -64,7 +64,7 @@
                             {
                                 if (i.Vedio_Url == item.Vedio_Url)
                                 {
-                                    int Qcount = _context.LessonsTest.Where(m => m.Vedio_Url == item.Vedio_Url).Count();
+                                    int Qcount = _context.LessonQuestions.Where(m => m.Vedio_Url == item.Vedio_Url).Count();
 
                                     <tr>
                                         <td><h3>@count</h3></td>

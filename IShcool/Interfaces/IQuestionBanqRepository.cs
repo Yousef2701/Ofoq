@@ -6,21 +6,21 @@ namespace IShcool.Interfaces
     public interface IQuestionBanqRepository
     {
 
-        public Task<GeneralExam> AddNewGeneralExam(General_Exam_VM model);
+        public Task<Exam> AddNewGeneralExam(General_Exam_VM model);
 
-        public Task<GeneralExamQuestion> AddGeneralExamQuestion(General_Exam_Question_VM model);
+        public Task<ExamQuestion> AddGeneralExamQuestion(General_Exam_Question_VM model);
 
-        public Task<IEnumerable<GeneralExam>> GetAllTeacherGeneralExamsInAcademyYear(string teacherId, string year);
+        public Task<IEnumerable<Exam>> GetAllTeacherGeneralExamsInAcademyYear(string teacherId, string year);
 
-        public Task<IEnumerable<GeneralExamQuestion>> GetGenaralExamQuestions(General_Exam_VM model);
+        public Task<IEnumerable<ExamQuestion>> GetGenaralExamQuestions(General_Exam_VM model);
 
         public Task<int> SaveGenaralExamResult(General_Exam_Answers_VM model);
 
-        public Task<IEnumerable<GeneralExamResult>> GetStudentGeneeralExamResults(string studentId, string teacherId);
+        public Task<IEnumerable<ExamResult>> GetStudentGeneeralExamResults(string studentId, string teacherId);
 
-        public Task<IEnumerable<GeneralExam>> GetAllTeacherGeneralExams(string teacherId);
+        public Task<IEnumerable<Exam>> GetAllTeacherGeneralExams(string teacherId);
 
-        public Task<GeneralExam> GetGeneralExam(string teacherId, string title, string year);
+        public Task<Exam> GetGeneralExam(string teacherId, string title, string year);
 
         public Task<int> GetGeneralExamQuestionsCount(string teacherId, string title, string year);
 

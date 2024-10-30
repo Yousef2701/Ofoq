@@ -31,26 +31,24 @@ namespace IShcool.Repository
 
         #region Add New General Exam
 
-        public async Task<GeneralExam> AddNewGeneralExam(General_Exam_VM model)
+        public async Task<Exam> AddNewGeneralExam(General_Exam_VM model)
         {
             if(model != null)
             {
                 string start = model.StartExamDate + " " + model.StartExamTime;
                 string finish = model.FinishExamDate + " " + model.FinishExamTime;
 
-                var exam = new GeneralExam
+                var exam = new Exam
                 {
                     TeacherId = model.TeacherId,
                     Title = model.Title,
                     Exam_Duration = model.Exam_Duration,
                     Academy_Year = model.Academy_Year,
-                    Date = DateTime.Now.ToString("dd-MM-yyyy"),
-                    Time = DateTime.Now.ToString("hh:mm tt"),
                     StartExamDate = DateTime.Parse(start),
                     FinishExamDate = DateTime.Parse(finish)
                 };
 
-                _context.GeneralExams.Add(exam);
+                _context.Exams.Add(exam);
                 _context.SaveChanges();
 
                 return exam;
@@ -63,13 +61,13 @@ namespace IShcool.Repository
 
         #region Add General Exam Question
 
-        public async Task<GeneralExamQuestion> AddGeneralExamQuestion(General_Exam_Question_VM model)
+        public async Task<ExamQuestion> AddGeneralExamQuestion(General_Exam_Question_VM model)
         {
             if(model != null)
             {
                 if (model.Quest_Type == "Image")
                 {
-                    int count = _context.GeneralExamQuestions.Where(m => m.ExamTitle == model.ExamTitle).Count() + 1;
+                    int count = _context.ExamQuestions.Where(m => m.ExamTitle == model.ExamTitle).Count() + 1;
 
                     var answer_1 = new Tools(_Environment);
                     string answer_1_Url = answer_1.AddAnswersImages(model.Frist_Answer_File,model.TeacherId + model.ExamTitle + "1" + count);
@@ -83,7 +81,7 @@ namespace IShcool.Repository
                     var answer_4 = new Tools(_Environment);
                     string answer_4_Url = answer_4.AddAnswersImages(model.Forth_Answer_File, model.TeacherId + model.ExamTitle + "4" + count);
 
-                    var question = new GeneralExamQuestion
+                    var question = new ExamQuestion
                     {
                         ExamTitle = model.ExamTitle,
                         TeacherId = model.TeacherId,
@@ -98,19 +96,17 @@ namespace IShcool.Repository
                         Forth_Answer_Url = answer_4_Url,
                         Forth_Answer = "",
                         Third_Answer_Url = answer_3_Url,
-                        Correct_Answer = model.Correct_Answer,
-                        Date = DateTime.Now.ToString("dd-MM-yyyy"),
-                        Time = DateTime.Now.ToString("hh:mm tt")
+                        Correct_Answer = model.Correct_Answer
                     };
 
-                    _context.GeneralExamQuestions.Add(question);
+                    _context.ExamQuestions.Add(question);
                     _context.SaveChanges();
 
                     return question;
                 }
                 else if (model.Quest_Type == "Text")
                 {
-                    var question = new GeneralExamQuestion
+                    var question = new ExamQuestion
                     {
                         ExamTitle = model.ExamTitle,
                         TeacherId = model.TeacherId,
@@ -125,12 +121,10 @@ namespace IShcool.Repository
                         Third_Answer_Url = "",
                         Forth_Answer = model.Forth_Answer,
                         Forth_Answer_Url = "",
-                        Correct_Answer = model.Correct_Answer,
-                        Date = DateTime.Now.ToString("dd-MM-yyyy"),
-                        Time = DateTime.Now.ToString("hh:mm tt")
+                        Correct_Answer = model.Correct_Answer
                     };
 
-                    _context.GeneralExamQuestions.Add(question);
+                    _context.ExamQuestions.Add(question);
                     _context.SaveChanges();
 
                     return question;
@@ -144,11 +138,11 @@ namespace IShcool.Repository
 
         #region Get All Teacher General Exams In Academy Year
 
-        public async Task<IEnumerable<GeneralExam>> GetAllTeacherGeneralExamsInAcademyYear(string teacherId, string year)
+        public async Task<IEnumerable<Exam>> GetAllTeacherGeneralExamsInAcademyYear(string teacherId, string year)
         {
             if(teacherId != null && year != null)
             {
-                var exams = _context.GeneralExams.Where(m => m.Academy_Year == year & m.TeacherId == teacherId).OrderBy(m => m.Date).ThenBy(m => m.Time).ToList();
+                var exams = _context.Exams.Where(m => m.Academy_Year == year & m.TeacherId == teacherId).OrderBy(m => m.StartExamDate).ToList();
                 if(exams != null)
                     return exams;
             }
@@ -160,14 +154,14 @@ namespace IShcool.Repository
 
         #region Get Genaral Exam Questions
 
-        public async Task<IEnumerable<GeneralExamQuestion>> GetGenaralExamQuestions(General_Exam_VM model)
+        public async Task<IEnumerable<ExamQuestion>> GetGenaralExamQuestions(General_Exam_VM model)
         {
             if (model != null)
             {
-                var exam = _context.GeneralExams.Where(m => m.Title == model.Title & m.TeacherId == model.TeacherId & m.Academy_Year == model.Academy_Year).FirstOrDefault();
+                var exam = _context.Exams.Where(m => m.Title == model.Title & m.TeacherId == model.TeacherId & m.Academy_Year == model.Academy_Year).FirstOrDefault();
                 if (exam != null)
                 {
-                    List<GeneralExamQuestion> quests = _context.GeneralExamQuestions.Where(m => m.ExamTitle == exam.Title & m.TeacherId == exam.TeacherId & m.Academy_Year == exam.Academy_Year).OrderBy(m => m.Date).ThenBy(m => m.Time).ToList();
+                    List<ExamQuestion> quests = _context.ExamQuestions.Where(m => m.ExamTitle == exam.Title & m.TeacherId == exam.TeacherId & m.Academy_Year == exam.Academy_Year).OrderBy(m => m.Quest).ToList();
                     return quests;
                 }
             }
@@ -186,7 +180,7 @@ namespace IShcool.Repository
                 var userId = await _userRepository.GitLoggingUserId();
 
                 string[] ans = model.Answers.Split(",");
-                List<GeneralExamQuestion> quests = _context.GeneralExamQuestions.Where(m => m.ExamTitle == model.Title & m.TeacherId == model.TeacherId & m.Academy_Year == model.Academy_Year).OrderBy(m => m.Date).ThenBy(m => m.Time).ToList();
+                List<ExamQuestion> quests = _context.ExamQuestions.Where(m => m.ExamTitle == model.Title & m.TeacherId == model.TeacherId & m.Academy_Year == model.Academy_Year).OrderBy(m => m.Quest).ToList();
                 int count = 0;
 
                 for(int i = 0; i< quests.Count; i++)
@@ -196,10 +190,10 @@ namespace IShcool.Repository
                     }
                 }
 
-                var check = _context.GeneralExamResults.Where(m => m.TeacherId == model.TeacherId & m.StudentId == userId & m.ExamTitle == model.Title).FirstOrDefault();
+                var check = _context.ExamResults.Where(m => m.TeacherId == model.TeacherId & m.StudentId == userId & m.ExamTitle == model.Title).FirstOrDefault();
                 if (check == null)
                 {
-                    var result = new GeneralExamResult
+                    var result = new ExamResult
                     {
                         ExamTitle = model.Title,
                         TeacherId = model.TeacherId,
@@ -208,7 +202,7 @@ namespace IShcool.Repository
                         Time = DateTime.Now.ToString("hh:mm tt"),
                         Correct_Answers_No = count
                     };
-                    _context.GeneralExamResults.Add(result);
+                    _context.ExamResults.Add(result);
                     _context.SaveChanges();
                 }
 
@@ -222,11 +216,11 @@ namespace IShcool.Repository
 
         #region Get Student Geneeral Exam Results
 
-        public async Task<IEnumerable<GeneralExamResult>> GetStudentGeneeralExamResults(string studentId, string teacherId)
+        public async Task<IEnumerable<ExamResult>> GetStudentGeneeralExamResults(string studentId, string teacherId)
         {
             if(studentId != null & teacherId != null)
             {
-                var results = _context.GeneralExamResults.Where(m => m.StudentId == studentId & m.TeacherId == teacherId).ToList();
+                var results = _context.ExamResults.Where(m => m.StudentId == studentId & m.TeacherId == teacherId).ToList();
                 if (results != null) 
                     return results;
             }
@@ -238,11 +232,11 @@ namespace IShcool.Repository
 
         #region Get All Teacher General Exams
 
-        public async Task<IEnumerable<GeneralExam>> GetAllTeacherGeneralExams(string teacherId)
+        public async Task<IEnumerable<Exam>> GetAllTeacherGeneralExams(string teacherId)
         {
             if(teacherId != null)
             {
-                var exams = _context.GeneralExams.Where(m => m.TeacherId == teacherId).OrderBy(m => m.Academy_Year).ToList();
+                var exams = _context.Exams.Where(m => m.TeacherId == teacherId).OrderBy(m => m.Academy_Year).ToList();
                 if(exams != null)
                     return exams;
             }
@@ -251,14 +245,14 @@ namespace IShcool.Repository
 
         #endregion
 
-
+        
         #region Get General Exam
 
-        public async Task<GeneralExam> GetGeneralExam(string teacherId, string title, string year)
+        public async Task<Exam> GetGeneralExam(string teacherId, string title, string year)
         {
             if(teacherId != null & title != null & year != null)
             {
-                var exam = _context.GeneralExams.Where(m => m.TeacherId == teacherId & m.Title == title & m.Academy_Year == year).FirstOrDefault();
+                var exam = _context.Exams.Where(m => m.TeacherId == teacherId & m.Title == title & m.Academy_Year == year).FirstOrDefault();
                 if(exam != null)
                     return exam;
             }
@@ -274,7 +268,7 @@ namespace IShcool.Repository
         {
             if (teacherId != null & title != null & year != null)
             {
-                int count = _context.GeneralExamQuestions.Where(m => m.TeacherId == teacherId & m.ExamTitle == title & m.Academy_Year == year).Count();
+                int count = _context.ExamQuestions.Where(m => m.TeacherId == teacherId & m.ExamTitle == title & m.Academy_Year == year).Count();
                 if(count > 0) 
                     return count;
             }
@@ -290,7 +284,7 @@ namespace IShcool.Repository
         {
             if(model != null)
             {
-                var exam = _context.GeneralExams.Where(m => m.Title == model.Title & m.TeacherId == model.TeacherId & m.Academy_Year == model.Academy_Year).FirstOrDefault();
+                var exam = _context.Exams.Where(m => m.Title == model.Title & m.TeacherId == model.TeacherId & m.Academy_Year == model.Academy_Year).FirstOrDefault();
                 if(exam != null)
                 {
                     return exam.Exam_Duration.ToString();

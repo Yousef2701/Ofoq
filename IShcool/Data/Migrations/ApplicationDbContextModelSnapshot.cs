@@ -58,7 +58,7 @@ namespace IShcool.Data.Migrations
                     b.ToTable("Chapters");
                 });
 
-            modelBuilder.Entity("IShcool.Models.GeneralExam", b =>
+            modelBuilder.Entity("IShcool.Models.Exam", b =>
                 {
                     b.Property<string>("TeacherId")
                         .HasColumnType("nvarchar(450)");
@@ -71,11 +71,6 @@ namespace IShcool.Data.Migrations
                         .HasMaxLength(18)
                         .HasColumnType("nvarchar(18)");
 
-                    b.Property<string>("Date")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
                     b.Property<string>("Exam_Duration")
                         .IsRequired()
                         .HasMaxLength(3)
@@ -87,17 +82,12 @@ namespace IShcool.Data.Migrations
                     b.Property<DateTime>("StartExamDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Time")
-                        .IsRequired()
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
-
                     b.HasKey("TeacherId", "Title", "Academy_Year");
 
-                    b.ToTable("GeneralExams");
+                    b.ToTable("Exams");
                 });
 
-            modelBuilder.Entity("IShcool.Models.GeneralExamQuestion", b =>
+            modelBuilder.Entity("IShcool.Models.ExamQuestion", b =>
                 {
                     b.Property<string>("TeacherId")
                         .HasColumnType("nvarchar(450)");
@@ -118,11 +108,6 @@ namespace IShcool.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(6)
                         .HasColumnType("nvarchar(6)");
-
-                    b.Property<string>("Date")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Forth_Answer")
                         .HasMaxLength(130)
@@ -157,17 +142,12 @@ namespace IShcool.Data.Migrations
                     b.Property<string>("Third_Answer_Url")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Time")
-                        .IsRequired()
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
-
                     b.HasKey("TeacherId", "ExamTitle", "Academy_Year", "Quest");
 
-                    b.ToTable("GeneralExamQuestions");
+                    b.ToTable("ExamQuestions");
                 });
 
-            modelBuilder.Entity("IShcool.Models.GeneralExamResult", b =>
+            modelBuilder.Entity("IShcool.Models.ExamResult", b =>
                 {
                     b.Property<string>("TeacherId")
                         .HasColumnType("nvarchar(450)");
@@ -196,7 +176,7 @@ namespace IShcool.Data.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("GeneralExamResults");
+                    b.ToTable("ExamResults");
                 });
 
             modelBuilder.Entity("IShcool.Models.Lesson", b =>
@@ -241,7 +221,7 @@ namespace IShcool.Data.Migrations
                     b.ToTable("Lessons");
                 });
 
-            modelBuilder.Entity("IShcool.Models.LessonTest", b =>
+            modelBuilder.Entity("IShcool.Models.LessonQuestion", b =>
                 {
                     b.Property<string>("Vedio_Url")
                         .HasColumnType("nvarchar(450)");
@@ -255,10 +235,12 @@ namespace IShcool.Data.Migrations
                         .HasMaxLength(6)
                         .HasColumnType("nvarchar(6)");
 
-                    b.Property<string>("Date")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                    b.Property<string>("Forth_Answer")
+                        .HasMaxLength(130)
+                        .HasColumnType("nvarchar(130)");
+
+                    b.Property<string>("Forth_Answer_Url")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Frist_Answer")
                         .HasMaxLength(130)
@@ -286,14 +268,9 @@ namespace IShcool.Data.Migrations
                     b.Property<string>("Third_Answer_Url")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Time")
-                        .IsRequired()
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
-
                     b.HasKey("Vedio_Url", "Quest");
 
-                    b.ToTable("LessonsTest");
+                    b.ToTable("LessonQuestions");
                 });
 
             modelBuilder.Entity("IShcool.Models.LTestResult", b =>
@@ -676,10 +653,10 @@ namespace IShcool.Data.Migrations
                     b.Navigation("Teacher");
                 });
 
-            modelBuilder.Entity("IShcool.Models.GeneralExam", b =>
+            modelBuilder.Entity("IShcool.Models.Exam", b =>
                 {
                     b.HasOne("The_Top_App.Models.Teacher", "Teacher")
-                        .WithMany("GeneralExams")
+                        .WithMany("Exams")
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -687,16 +664,16 @@ namespace IShcool.Data.Migrations
                     b.Navigation("Teacher");
                 });
 
-            modelBuilder.Entity("IShcool.Models.GeneralExamResult", b =>
+            modelBuilder.Entity("IShcool.Models.ExamResult", b =>
                 {
                     b.HasOne("The_Top_App.Models.Student", "Student")
-                        .WithMany("GeneralExamResults")
+                        .WithMany("ExamResults")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("The_Top_App.Models.Teacher", "Teacher")
-                        .WithMany("GeneralExamResults")
+                        .WithMany("ExamResults")
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -791,7 +768,7 @@ namespace IShcool.Data.Migrations
                 {
                     b.Navigation("Enrollments");
 
-                    b.Navigation("GeneralExamResults");
+                    b.Navigation("ExamResults");
 
                     b.Navigation("LTestResults");
                 });
@@ -804,9 +781,9 @@ namespace IShcool.Data.Migrations
 
                     b.Navigation("Enrollments");
 
-                    b.Navigation("GeneralExamResults");
+                    b.Navigation("ExamResults");
 
-                    b.Navigation("GeneralExams");
+                    b.Navigation("Exams");
                 });
 #pragma warning restore 612, 618
         }

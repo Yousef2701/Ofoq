@@ -44,9 +44,9 @@ namespace The_Top_App.Models
 
         public virtual ICollection<Chapter> Chapters { get; } = new List<Chapter>();
 
-        public virtual ICollection<GeneralExam> GeneralExams { get; } = new List<GeneralExam>();
+        public virtual ICollection<Exam> Exams { get; } = new List<Exam>();
 
-        public virtual ICollection<GeneralExamResult> GeneralExamResults { get; } = new List<GeneralExamResult>();
+        public virtual ICollection<ExamResult> ExamResults { get; } = new List<ExamResult>();
 
         public virtual ICollection<Book> Books { get; } = new List<Book>();
 

@@ -45,6 +45,6 @@ namespace The_Top_App.Models
 
         public virtual ICollection<LTestResult> LTestResults { get; } = new List<LTestResult>();
 
-        public virtual ICollection<GeneralExamResult> GeneralExamResults { get; } = new List<GeneralExamResult>();
+        public virtual ICollection<ExamResult> ExamResults { get; } = new List<ExamResult>();
     }
 }

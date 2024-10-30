@@ -26,9 +26,9 @@
             @{
                 int c = 1;
 
-                foreach (GeneralExam item in @ViewBag.Exams)
+                foreach (Exam item in @ViewBag.Exams)
                 {
-                    int count = _context.GeneralExamQuestions.Where(m => m.ExamTitle == item.Title & m.TeacherId == item.TeacherId).Count();
+                    int count = _context.ExamQuestions.Where(m => m.ExamTitle == item.Title & m.TeacherId == item.TeacherId).Count();
                     if(count > 0){
                         <div class="card">
                             <div class="card-header">امتحان @c</div>

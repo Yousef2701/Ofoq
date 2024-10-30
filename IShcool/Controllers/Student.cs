@@ -129,17 +129,13 @@ namespace IShcool.Controllers
         [HttpGet]
         public async Task<IActionResult> LessonTest(Lesson_Url_VM model)
         {
-            string[] results = await _lessonTestRepository.GetTestQuestions(model.Url);
-
-            ViewBag.Questions = results[0];
-            ViewBag.ans = results[1];
-            ViewBag.Min = results[2];
-            ViewBag.Type = results[3];
-
             ViewBag.Title = await _lessonRepository.GetLessonTitle(model.Url);
-
             ViewBag.TeacherId = model.TeacherId;
             ViewBag.Url = model.Url;
+
+            ViewBag.Questions = await _lessonTestRepository.GetTestQuestions(model.Url);
+
+            ViewBag.Min = await _lessonTestRepository.GetTestQuestionCount(model.Url);
 
             return View();
         }
@@ -151,7 +147,12 @@ namespace IShcool.Controllers
         [HttpPost]
         public async Task<IActionResult> Result(Test_Answers_VM model)
         {
-            ViewBag.Logic = await _lessonTestRepository.SaveTestResult(model);
+            ViewBag.Correct = await _lessonTestRepository.SaveTestResult(model);
+            ViewBag.Count = await _lessonTestRepository.GetTestQuestionCount(model.url);
+            string[] answers = model.answers.Split(',');
+            ViewBag.Answers = answers;
+
+            ViewBag.Questions = await _lessonTestRepository.GetTestQuestions(model.url);
 
             return View();
         }

@@ -54,7 +54,7 @@
                         string title = ViewBag.Exam.Title;
                         string teacherId = ViewBag.Exam.TeacherId;
 
-                        var stdTest = _context.GeneralExamResults.Where(m => m.StudentId == item.Id & m.ExamTitle == title & m.TeacherId == teacherId).FirstOrDefault();
+                        var stdTest = _context.ExamResults.Where(m => m.StudentId == item.Id & m.ExamTitle == title & m.TeacherId == teacherId).FirstOrDefault();
                         if (stdTest != null)
                         {
                             <tr>

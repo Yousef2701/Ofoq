@@ -27,19 +27,19 @@ namespace IShcool.Data
             builder.Entity<Lesson>()
             .HasKey(b => new { b.TeacherId, b.ChapterTitle, b.Title });
 
-            builder.Entity<LessonTest>()
+            builder.Entity<LessonQuestion>()
             .HasKey(b => new { b.Vedio_Url, b.Quest });
 
             builder.Entity<LTestResult>()
             .HasKey(b => new { b.Vedio_Url, b.StudentId });
 
-            builder.Entity<GeneralExam>()
+            builder.Entity<Exam>()
            .HasKey(b => new { b.TeacherId, b.Title, b.Academy_Year });
 
-            builder.Entity<GeneralExamQuestion>()
+            builder.Entity<ExamQuestion>()
            .HasKey(b => new { b.TeacherId, b.ExamTitle, b.Academy_Year, b.Quest});
 
-            builder.Entity<GeneralExamResult>()
+            builder.Entity<ExamResult>()
            .HasKey(b => new { b.TeacherId, b.ExamTitle, b.StudentId });
 
             builder.Entity<Book>()
@@ -56,15 +56,15 @@ namespace IShcool.Data
 
         public DbSet<Lesson> Lessons { get; set; }
 
-        public DbSet<LessonTest> LessonsTest { get; set; }
+        public DbSet<LessonQuestion> LessonQuestions { get; set; }
 
         public DbSet<LTestResult> LTestResults { get; set; }
 
-        public DbSet<GeneralExam> GeneralExams { get; set; }
+        public DbSet<Exam> Exams { get; set; }
 
-        public DbSet<GeneralExamQuestion> GeneralExamQuestions { get; set; }
+        public DbSet<ExamQuestion> ExamQuestions { get; set; }
 
-        public DbSet<GeneralExamResult> GeneralExamResults { get; set;}
+        public DbSet<ExamResult> ExamResults { get; set;}
 
         public DbSet<Book> Books { get; set; }
 

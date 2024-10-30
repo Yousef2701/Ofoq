@@ -8,7 +8,7 @@ namespace IShcool.Interfaces
 
         public Task<Lesson> AddNewLesson(Lesson_VM model);
 
-        public Task<LessonTest> AddLessonTestQuestion(Lesson_Test_VM model);
+        public Task<LessonQuestion> AddLessonTestQuestion(Lesson_Test_VM model);
 
         public Task<IEnumerable<Lesson>> GetAllLessons();
 

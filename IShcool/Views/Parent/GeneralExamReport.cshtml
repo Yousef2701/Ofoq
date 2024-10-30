@@ -41,12 +41,12 @@
                     int count = 1;
                     string id = ViewBag.Student.Id;
                     string year = ViewBag.Student.Grade;
-                    foreach (GeneralExam e in @ViewBag.Exams)
+                    foreach (Exam e in @ViewBag.Exams)
                     {
-                        var check = _context.GeneralExamResults.Where(m => m.StudentId == id & m.ExamTitle == e.Title & m.TeacherId == e.TeacherId).FirstOrDefault();
+                        var check = _context.ExamResults.Where(m => m.StudentId == id & m.ExamTitle == e.Title & m.TeacherId == e.TeacherId).FirstOrDefault();
                         if(check == null)
                         {
-                            int Qcount = _context.GeneralExamQuestions.Where(m => m.ExamTitle == e.Title & m.TeacherId == e.TeacherId & m.Academy_Year == year).Count();
+                            int Qcount = _context.ExamQuestions.Where(m => m.ExamTitle == e.Title & m.TeacherId == e.TeacherId & m.Academy_Year == year).Count();
 
                             <tr>
                                 <td><h3>@count</h3></td>
@@ -59,11 +59,11 @@
                         }
                         else
                         {
-                            foreach (GeneralExamResult item in @ViewBag.Results)
+                            foreach (ExamResult item in @ViewBag.Results)
                             {
                                 if(e.Title == item.ExamTitle & e.TeacherId == item.TeacherId)
                                 {
-                                    int Qcount = _context.GeneralExamQuestions.Where(m => m.ExamTitle == e.Title & m.TeacherId == e.TeacherId & m.Academy_Year == year).Count();
+                                    int Qcount = _context.ExamQuestions.Where(m => m.ExamTitle == e.Title & m.TeacherId == e.TeacherId & m.Academy_Year == year).Count();
 
                                     <tr>
                                         <td><h3>@count</h3></td>

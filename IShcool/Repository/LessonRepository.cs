@@ -61,13 +61,13 @@ namespace IShcool.Repository
 
         #region Add Lesson Test Question
 
-        public async Task<LessonTest> AddLessonTestQuestion(Lesson_Test_VM model)
+        public async Task<LessonQuestion> AddLessonTestQuestion(Lesson_Test_VM model)
         {
             if(model != null)
             {
                 if(model.Quest_Type == "Image")
                 {
-                    var count = _context.LessonsTest.Where(m => m.Vedio_Url == model.Vedio_Url).Count() + 1;
+                    var count = _context.LessonQuestions.Where(m => m.Vedio_Url == model.Vedio_Url).Count() + 1;
 
                     var answer_1 = new Tools(_Environment);
                     string answer_1_Url = answer_1.AddAnswersImages(model.Frist_Answer_File, model.Vedio_Url + "1" + count);
@@ -78,7 +78,10 @@ namespace IShcool.Repository
                     var answer_3 = new Tools(_Environment);
                     string answer_3_Url = answer_3.AddAnswersImages(model.Third_Answer_File, model.Vedio_Url + "3" + count);
 
-                    var question = new LessonTest
+                    var answer_4 = new Tools(_Environment);
+                    string answer_4_Url = answer_4.AddAnswersImages(model.Third_Answer_File, model.Vedio_Url + "4" + count);
+
+                    var question = new LessonQuestion
                     {
                         Vedio_Url = model.Vedio_Url,
                         Quest = model.Quest,
@@ -89,19 +92,19 @@ namespace IShcool.Repository
                         Second_Answer_Url = answer_2_Url,
                         Third_Answer = "",
                         Third_Answer_Url = answer_3_Url,
-                        Correct_Answer = model.Correct_Answer,
-                        Date = DateTime.Now.ToString("dd-MM-yyyy"),
-                        Time = DateTime.Now.ToString("hh:mm tt")
+                        Forth_Answer = "",
+                        Forth_Answer_Url = answer_4_Url,
+                        Correct_Answer = model.Correct_Answer
                     };
 
-                    _context.LessonsTest.Add(question);
+                    _context.LessonQuestions.Add(question);
                     _context.SaveChanges();
 
                     return question;
                 }
                 else if(model.Quest_Type == "Text")
                 {
-                    var question = new LessonTest
+                    var question = new LessonQuestion
                     {
                         Vedio_Url = model.Vedio_Url,
                         Quest = model.Quest,
@@ -112,12 +115,12 @@ namespace IShcool.Repository
                         Second_Answer_Url = "",
                         Third_Answer = model.Third_Answer,
                         Third_Answer_Url = "",
-                        Correct_Answer = model.Correct_Answer,
-                        Date = DateTime.Now.ToString("dd-MM-yyyy"),
-                        Time = DateTime.Now.ToString("hh:mm tt")
+                        Forth_Answer = model.Forth_Answer,
+                        Forth_Answer_Url = "",
+                        Correct_Answer = model.Correct_Answer
                     };
 
-                    _context.LessonsTest.Add(question);
+                    _context.LessonQuestions.Add(question);
                     _context.SaveChanges();
 
                     return question;
