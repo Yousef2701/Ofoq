@@ -17,6 +17,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using IShcool.Data;
 using IShcool.Interfaces;
+using IShcool.IRepo;
 
 namespace IShcool.Areas.Identity.Pages.Account
 {
@@ -26,16 +27,19 @@ namespace IShcool.Areas.Identity.Pages.Account
         private readonly ILogger<LoginModel> _logger;
         private readonly ApplicationDbContext _context;
         private readonly IStudentRepository _studentRepository;
+        private readonly ILoginManagement _studentLogin;
 
         public LoginModel(SignInManager<IdentityUser> signInManager,
                           ILogger<LoginModel> logger,
                           ApplicationDbContext context,
-                          IStudentRepository studentRepository)
+                          IStudentRepository studentRepository,
+                          ILoginManagement studentLogin )
         {
             _signInManager = signInManager;
             _logger = logger;
             _context = context;
             _studentRepository = studentRepository;
+            _studentLogin = studentLogin;
         }
 
         /// <summary>
@@ -140,6 +144,9 @@ namespace IShcool.Areas.Identity.Pages.Account
                     }
                     else if (type == "Student")
                     {
+                        var actionName = await _studentLogin.IsTeacherSelectedAsync(id);
+                        if (!actionName)
+                            return RedirectToAction("Choose_Subjects", "Identity");
                         return RedirectToAction("StudentHomePage", "Student");
                     }
                     else
