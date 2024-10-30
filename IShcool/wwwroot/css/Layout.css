@@ -49,9 +49,9 @@ html::-webkit-scrollbar-track, .comments::-webkit-scrollbar-track, .dropdown-con
     width: 100%;
     top: 0;
     border-bottom: 2px solid #FFD700;
-    padding: 10px;
     padding-right: 40px;
     z-index: 1000;
+    height:110px;
 }
 
 .navbar-brand {
