@@ -86,14 +86,10 @@ namespace IShcool.Repository
                         Vedio_Url = model.Vedio_Url,
                         Quest = model.Quest,
                         Quest_Type = model.Quest_Type,
-                        Frist_Answer = "",
-                        Frist_Answer_Url = answer_1_Url,
-                        Second_Answer = "",
-                        Second_Answer_Url = answer_2_Url,
-                        Third_Answer = "",
-                        Third_Answer_Url = answer_3_Url,
-                        Forth_Answer = "",
-                        Forth_Answer_Url = answer_4_Url,
+                        Frist_Answer = answer_1_Url,
+                        Second_Answer = answer_2_Url,
+                        Third_Answer = answer_3_Url,
+                        Forth_Answer = answer_4_Url,
                         Correct_Answer = model.Correct_Answer
                     };
 
@@ -110,13 +106,9 @@ namespace IShcool.Repository
                         Quest = model.Quest,
                         Quest_Type = model.Quest_Type,
                         Frist_Answer = model.Frist_Answer,
-                        Frist_Answer_Url = "",
                         Second_Answer = model.Second_Answer,
-                        Second_Answer_Url = "",
                         Third_Answer = model.Third_Answer,
-                        Third_Answer_Url = "",
                         Forth_Answer = model.Forth_Answer,
-                        Forth_Answer_Url = "",
                         Correct_Answer = model.Correct_Answer
                     };
 

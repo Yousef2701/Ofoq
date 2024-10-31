@@ -26,33 +26,17 @@ namespace IShcool.Models
         [StringLength(5, MinimumLength = 4, ErrorMessage = "Quest_Type Must Be More Than 4 Caracters & Less Than 5 Caracters")]
         public string Quest_Type { get; set; }
 
-        [AllowNull]
-        [StringLength(130, MinimumLength = 2, ErrorMessage = "Answer Must Be More Than 2 Caracters & Less Than 130 Caracters")]
+        [Required]
         public string? Frist_Answer { get; set; } = null;
 
-        [AllowNull]
-        [StringLength(130, MinimumLength = 2, ErrorMessage = "Answer Must Be More Than 2 Caracters & Less Than 130 Caracters")]
+        [Required]
         public string? Second_Answer { get; set; } = null;
 
-        [AllowNull]
-        [StringLength(130, MinimumLength = 2, ErrorMessage = "Answer Must Be More Than 2 Caracters & Less Than 130 Caracters")]
+        [Required]
         public string? Third_Answer { get; set; } = null;
 
-        [AllowNull]
-        [StringLength(130, MinimumLength = 2, ErrorMessage = "Answer Must Be More Than 2 Caracters & Less Than 130 Caracters")]
+        [Required]
         public string? Forth_Answer { get; set; } = null;
-
-        [AllowNull]
-        public string? Frist_Answer_Url { get; set; } = null;
-
-        [AllowNull]
-        public string? Second_Answer_Url { get; set; } = null;
-
-        [AllowNull]
-        public string? Third_Answer_Url { get; set; } = null;
-
-        [AllowNull]
-        public string? Forth_Answer_Url { get; set; } = null;
 
         [Required]
         [StringLength(6, MinimumLength = 1, ErrorMessage = "Correct_Answer Must Be More Than 1 Caracters & Less Than 6 Caracters")]
