@@ -1,5 +1,6 @@
 using IShcool.Data;
 using IShcool.Interfaces;
+using IShcool.IRepo;
 using IShcool.Repository;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
@@ -49,22 +50,23 @@ builder.Services.AddScoped<IQuestionBanqRepository, QuestionBanqRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<ILessonTestRepository, LessonTestRepository>();
 builder.Services.AddScoped<IParentRepository, ParentRepository>();
+builder.Services.AddScoped<ILoginManagement, LogInManagement>();
 
 
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.Limits.MaxRequestBodySize = 536870912; // 512 MB
-});
+//builder.WebHost.ConfigureKestrel(options =>
+//{
+//    options.Limits.MaxRequestBodySize = 536870912; // 512 MB
+//});
 
-builder.Services.Configure<FormOptions>(options =>
-{
-    options.MultipartBodyLengthLimit = 536870912; // 512 MB
-});
+//builder.Services.Configure<FormOptions>(options =>
+//{
+//    options.MultipartBodyLengthLimit = 536870912; // 512 MB
+//});
 
-builder.WebHost.UseKestrel(options =>
-{
-    options.Limits.MaxRequestBodySize = 536870912; // 512 MB
-});
+//builder.WebHost.UseKestrel(options =>
+//{
+//    options.Limits.MaxRequestBodySize = 536870912; // 512 MB
+//});
 
 
 var app = builder.Build();
