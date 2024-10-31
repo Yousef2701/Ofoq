@@ -12,7 +12,7 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/Lesson_Test.css">
 </head>
-<body>
+<body style="display:block">
     <div class="container big-cot">
         <div class="degree-container">
             <h1>نتيجة الامتحان</h1>
@@ -345,6 +345,11 @@
                     count++;
                 }
             }
+            <form asp-action="StudentHomePage" id="submitForm">
+               <button type="submit" id="submit" class="btn my-3 contact" style="min-width: 200px;width:fit-content;">
+                    العوده للصفحة الرئيسية
+                </button>
+            </form>
         </div>
     </div>
 
