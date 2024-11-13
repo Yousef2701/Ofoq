@@ -9,8 +9,10 @@ namespace IShcool.ViewModels
         [StringLength(55, MinimumLength = 3, ErrorMessage = "Name Must Be More Than 3 Caracters & Less Than 55 Caracters")]
         public string Name { get; set; }
 
-        [Required]
-        [StringLength(11, MinimumLength = 11, ErrorMessage = "Phone Must Be 11 Caracters")]
+        [Display(Name = "Student Phone")]
+        [StringLength(11),
+            RegularExpression(@"^01[0125][0-9]{8}$",
+            ErrorMessage = "Invalid phone number")]
         public string Phone { get; set; }
 
         [Required]
@@ -26,7 +28,11 @@ namespace IShcool.ViewModels
         public string SecondLang { get; set; }
 
         [AllowNull]
-        public string? Par_Phone { get; set; } = null;
+        [Display(Name = "Parent Phone")]
+        [StringLength(11),
+            RegularExpression(@"^01[0125][0-9]{8}$",
+            ErrorMessage = "Invalid phone number")]
+        public string? Par_Phone { get; set; }
 
         [Required]
         [StringLength(16, MinimumLength = 8, ErrorMessage = "Password Must Be More Than 8 Caracters & Less Than 16 Caracters")]

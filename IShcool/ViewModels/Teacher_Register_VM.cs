@@ -13,8 +13,10 @@ namespace IShcool.ViewModels
         [StringLength(45, MinimumLength = 3, ErrorMessage = "Subject Must Be More Than 3 Caracters & Less Than 45 Caracters")]
         public string Subject { get; set; }
 
-        [Required]
-        [StringLength(11, MinimumLength = 11, ErrorMessage = "Phone Must Be 11 Caracters")]
+        [Display(Name = "Teacher Phone")]
+        [StringLength(11),
+            RegularExpression(@"^01[0125][0-9]{8}$",
+            ErrorMessage = "Invalid phone number")]
         public string Phone { get; set; }
 
         [AllowNull]
