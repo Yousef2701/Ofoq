@@ -19,20 +19,21 @@ namespace IShcool.ViewModels
             ErrorMessage = "Invalid phone number")]
         public string Phone { get; set; }
 
-        [AllowNull]
-        public bool First { get; set; } = true;
+        public bool? First { get; set; } = true;
 
-        [AllowNull]
-        public bool Second { get; set; } = true;
+        public bool? Second { get; set; } = true;
 
-        [AllowNull]
-        public bool Third { get; set; } = true;
+        public bool? Third { get; set; } = true;
 
         [Required]
+        [Display(Name="Password")]
+        [DataType(DataType.Password)]
         [StringLength(16, MinimumLength = 8, ErrorMessage = "Password Must Be More Than 8 Caracters & Less Than 16 Caracters")]
         public string Password { get; set; }
 
         [Required]
+        [Display(Name = "Confirm Password")]
+        [DataType(DataType.Password)]
         [StringLength(16, MinimumLength = 8, ErrorMessage = "Password Must Be More Than 8 Caracters & Less Than 16 Caracters")]
         public string ConfirmPassword { get; set; }
 
