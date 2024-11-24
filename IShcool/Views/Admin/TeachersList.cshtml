@@ -43,12 +43,13 @@
         <table>
             <thead>
                 <tr>
-                    <td style="width:5%;"></td>
-                    <td style="width:20%;">اسـم المـدرس</td>
-                    <td style="width:20%;">رقـم التليفـون</td>
-                    <td style="width:20%;"> المـادة العـلميـة</td>
-                    <td style="width:20%;">عـدد الطلبـة</td>
-                    <td style="width:15%;"></td>
+                    <td style="width:4%;"></td>
+                    <td style="width:19%;">اسـم المـدرس</td>
+                    <td style="width:19%;">رقـم التليفـون</td>
+                    <td style="width:19%;"> المـادة العـلميـة</td>
+                    <td style="width:15%;">عـدد الطلبـة</td>
+                    <td style="width:12%;"></td>
+                    <td style="width:12%;"></td>
                 </tr>
             </thead>
             <tbody>
@@ -65,9 +66,14 @@
                             <td><h3>@item.Subject</h3></td>
                             <td><h3>@studentCount</h3></td>
                             <td>
-                                <form asp-action="" method="get">
-                                    <input hidden asp-for="Id" value="@item.Id" />
+                                <form asp-action="" method="">
                                     <button type="submit" class="btn vedio">الـدروس</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form asp-action="TeacherExamsList" method="get">
+                                    <input hidden asp-for="Id" value="@item.Id" />
+                                    <button type="submit" class="btn vedio">الامتحـانـات</button>
                                 </form>
                             </td>
                         </tr>

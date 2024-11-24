@@ -286,5 +286,58 @@ namespace IShcool.Repository
         }
 
         #endregion
+
+
+        #region Remove General Exam Question
+
+        public async Task<string> RemoveGeneralExamQuestion(General_Exam_Question_VM model)
+        {
+            if(model != null)
+            {
+                var quest = _context.ExamQuestions.Where(m => m.ExamTitle == model.ExamTitle & m.TeacherId == model.TeacherId & m.Academy_Year == model.Academy_Year & m.Quest == model.Quest).FirstOrDefault();
+                if(quest != null)
+                {
+                    _context.ExamQuestions.Remove(quest);
+                    _context.SaveChanges();
+
+                    return "Success";
+                }
+            }
+            return "Falled!";
+        }
+
+        #endregion
+
+
+        #region Delete General Exam
+
+        public async Task<string> DeleteGeneralExam(General_Exam_VM model)
+        {
+            if(model != null)
+            {
+                var quests = _context.ExamQuestions.Where(m => m.ExamTitle == model.Title & m.TeacherId == model.TeacherId & m.Academy_Year == model.Academy_Year).ToList();
+                if(quests.Count > 0)
+                {
+                    foreach(ExamQuestion item in quests)
+                    {
+                        _context.ExamQuestions.Remove(item);
+                        _context.SaveChanges();
+                    }
+                }
+
+                var exam = _context.Exams.Where(m => m.Title == model.Title & m.TeacherId == model.TeacherId & m.Academy_Year == model.Academy_Year).FirstOrDefault();
+                if (exam != null)
+                {
+                    _context.Exams.Remove(exam);
+                    _context.SaveChanges();
+                }
+
+                return "success";
+            }
+            return "Falled!";
+        }
+
+        #endregion
+
     }
 }

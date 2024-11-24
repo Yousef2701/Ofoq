@@ -1,5 +1,6 @@
 ﻿using IShcool.Data;
 using IShcool.Interfaces;
+using IShcool.Models;
 using IShcool.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -56,7 +57,6 @@ namespace IShcool.Controllers
         #endregion
 
 
-
         #region Admin Home Page
 
         [HttpGet]
@@ -66,7 +66,6 @@ namespace IShcool.Controllers
         }
 
         #endregion
-
 
         #region Student List
 
@@ -80,7 +79,6 @@ namespace IShcool.Controllers
 
         #endregion
 
-
         #region Student Enrollment List
 
         [HttpGet]
@@ -92,7 +90,6 @@ namespace IShcool.Controllers
         }
 
         #endregion
-
 
         #region Teachers List
 
@@ -106,6 +103,55 @@ namespace IShcool.Controllers
 
         #endregion
 
+        #region Teacher Exams List
+
+        [HttpGet]
+        public async Task<IActionResult> TeacherExamsList(Id_VM model)
+        {
+            ViewBag.Exams = await _questionBanqRepository.GetAllTeacherGeneralExams(model.Id);
+            var teacher = await _teacherRepository.GetTeacherById(model.Id);
+            ViewBag.Name = teacher.Name;
+
+            return View();
+        }
+
+        #endregion
+
+        #region Exam Questions List
+
+        [HttpGet]
+        public async Task<IActionResult> ExamQuestionsList(General_Exam_VM model)
+        {
+            ViewBag.Questions = await _questionBanqRepository.GetGenaralExamQuestions(model);
+
+            return View();
+        }
+
+        #endregion
+
+        #region Remove Question
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveQuestion(General_Exam_Question_VM model)
+        {
+            var result = await _questionBanqRepository.RemoveGeneralExamQuestion(model);
+
+            return RedirectToAction("Index");
+        }
+
+        #endregion
+
+        #region Delete Exam
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteExam(General_Exam_VM model)
+        {
+            var result = await _questionBanqRepository.DeleteGeneralExam(model);
+
+            return RedirectToAction("Index");
+        }
+
+        #endregion
 
         #region Lessons
 
@@ -173,7 +219,6 @@ namespace IShcool.Controllers
 
         #endregion
 
-
         #region Exams
 
         #region Add New General Exam
@@ -219,7 +264,6 @@ namespace IShcool.Controllers
         #endregion
 
         #endregion
-
 
         #region Add New Book
 

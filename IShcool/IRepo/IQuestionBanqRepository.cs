@@ -26,5 +26,9 @@ namespace IShcool.Interfaces
 
         public Task<string> GetGenaralExamDuration(General_Exam_VM model);
 
+        public Task<string> RemoveGeneralExamQuestion(General_Exam_Question_VM model);
+
+        public Task<string> DeleteGeneralExam(General_Exam_VM model);
+
     }
 }

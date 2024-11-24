@@ -1,0 +1,92 @@
+﻿@model IShcool.ViewModels.General_Exam_VM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Student_Home_Page.css">
+    <link rel="stylesheet" href="~/css/StudentList.css">
+    <title>Student Home Page</title>
+    <style>
+        .btn {
+            font-weight: 700 !important;
+            font-size: 1.3em !important;
+            width: 100% !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroller"></div>
+
+    <div class="subject_table">
+        <div class="table_info">
+            <h4>قائمة امتحانات المدرس :- @ViewBag.Name</h4>
+            <div class="search">
+                <input class="searchInput" type="search" id="search" onkeyup="search()" placeholder="بحث ..." />
+                <select>
+                    <option value="1" selected>عنوان الامتحان</option>
+                    <option value="3">السنة الدراسية</option>
+                </select>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td style="width:4%;"></td>
+                    <td style="width:19%;">عنوان الامتحان</td>
+                    <td style="width:16%;">مدة الأمتحان</td>
+                    <td style="width:16%;">السنة الدراسية</td>
+                    <td style="width:15%;"></td>
+                    <td style="width:15%;"></td>
+                    <td style="width:15%;"></td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count = 1;
+                    foreach (Exam item in @ViewBag.Exams)
+                    {
+                        <tr>
+                            <td><h3>@count</h3></td>
+                            <td><h3>@item.Title</h3></td>
+                            <td><h3>@item.Exam_Duration دقائق</h3></td>
+                            <td><h3>@item.Academy_Year</h3></td>
+                            <td>
+                                <form asp-action="ExamQuestionsList" method="get">
+                                    <input hidden asp-for="Title" value="@item.Title" />
+                                    <input hidden asp-for="TeacherId" value="@item.TeacherId" />
+                                    <input hidden asp-for="Academy_Year" value="@item.Academy_Year" />
+                                    <button type="submit" class="btn vedio">قائمة الأسئلة</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form asp-action="" method="">
+                                    <button type="submit" class="btn vedio">درجات الطلبة</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form asp-action="DeleteExam" method="post">
+                                    <input hidden asp-for="Title" value="@item.Title" />
+                                    <input hidden asp-for="TeacherId" value="@item.TeacherId" />
+                                    <input hidden asp-for="Academy_Year" value="@item.Academy_Year" />
+                                    <button type="submit" class="btn vedio">حذف الامتحان</button>
+                                </form>
+                            </td>
+                        </tr>
+
+                        count++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <script src="~/js/Student_List.js"></script>
+</body>
+</html>

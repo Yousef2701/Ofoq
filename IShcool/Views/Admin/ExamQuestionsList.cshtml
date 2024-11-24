@@ -1,0 +1,89 @@
+﻿@model IShcool.ViewModels.General_Exam_Question_VM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Roboto:wght@100;300;400;500;700;900&family=Sigmar+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Student_Home_Page.css">
+    <link rel="stylesheet" href="~/css/StudentList.css">
+    <title>Student Home Page</title>
+    <style>
+        .btn {
+            font-weight: 700 !important;
+            font-size: 1.3em !important;
+            width: 100% !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroller"></div>
+
+    <div class="subject_table">
+        <div class="table_info">
+            <h4>قائمة الأسئلة</h4>
+            <div class="search">
+                <input class="searchInput" type="search" id="search" onkeyup="search()" placeholder="بحث ..." />
+                <select>
+                    <option value="1" selected>السؤال</option>
+                </select>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td style="width:5%;"></td>
+                    <td style="width:15%;">السؤال</td>
+                    <td style="width:13%;">الاجابة الأولى</td>
+                    <td style="width:13%;">الاجابة الثانية</td>
+                    <td style="width:13%;">الاجابة الثالثة</td>
+                    <td style="width:13%;">الاجابة الرابعة</td>
+                    <td style="width:8%;">الاجابة الصحيحة</td>
+                    <td style="width:10%;"></td>
+                    <td style="width:10%;"></td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count = 1;
+                    foreach (ExamQuestion item in @ViewBag.Questions)
+                    {
+                        <tr>
+                            <td><h3>@count</h3></td>
+                            <td><h3>@item.Quest</h3></td>
+                            <td><h3>@item.Frist_Answer</h3></td>
+                            <td><h3>@item.Second_Answer</h3></td>
+                            <td><h3>@item.Third_Answer</h3></td>
+                            <td><h3>@item.Forth_Answer</h3></td>
+                            <td><h3>@item.Correct_Answer</h3></td>
+                            <td>
+                                <form asp-action="" method="">
+                                    <button type="submit" class="btn vedio">تعديل</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form asp-action="RemoveQuestion" method="post">
+                                    <input hidden asp-for="ExamTitle" value="@item.ExamTitle" />
+                                    <input hidden asp-for="TeacherId" value="@item.TeacherId" />
+                                    <input hidden asp-for="Academy_Year" value="@item.Academy_Year" />
+                                    <input hidden asp-for="Quest" value="@item.Quest" />
+                                    <button type="submit" class="btn vedio">حذف</button>
+                                </form>
+                            </td>
+                        </tr>
+
+                        count++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <script src="~/js/Student_List.js"></script>
+</body>
+</html>
