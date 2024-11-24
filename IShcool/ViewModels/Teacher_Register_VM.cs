@@ -19,11 +19,11 @@ namespace IShcool.ViewModels
             ErrorMessage = "Invalid phone number")]
         public string Phone { get; set; }
 
-        public bool? First { get; set; } = true;
+        public bool First { get; set; } = true;
 
-        public bool? Second { get; set; } = true;
+        public bool Second { get; set; } = true;
 
-        public bool? Third { get; set; } = true;
+        public bool Third { get; set; } = true;
 
         [Required]
         [Display(Name="Password")]
