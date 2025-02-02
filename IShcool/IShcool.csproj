@@ -21,6 +21,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\AnswersImages\" />
+    <Folder Include="wwwroot\Files\" />
+    <Folder Include="wwwroot\UsersImages\" />
     <Folder Include="wwwroot\Vedios\" />
   </ItemGroup>
 
