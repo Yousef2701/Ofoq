@@ -1,10 +1,9 @@
-﻿using IShcool.Interfaces;
-using IShcool.ViewModels;
+﻿using ISchool.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IShcool.Controllers
 {
-    public class Teacher : Controller
+    public class TeacherController : Controller
     {
 
         #region Dependancey injuction
@@ -17,7 +16,7 @@ namespace IShcool.Controllers
         private readonly ILessonTestRepository _lessonTestRepository;
         private readonly IQuestionBanqRepository _questionBanqRepository;
 
-        public Teacher(IUserRepository userRepository,
+        public TeacherController(IUserRepository userRepository,
                        IStudentRepository studentRepository,
                        IEnrollmentRepository enrollmentRepository,
                        ILessonRepository lessonRepository,
@@ -93,8 +92,8 @@ namespace IShcool.Controllers
             ViewBag.QuestNum = questNum;
 
             var Students = await _studentRepository.GetAllStudentsInAcademyYear(lesson.Academy_Year);
-            List<The_Top_App.Models.Student> subStudents = new List<The_Top_App.Models.Student>();
-            foreach (The_Top_App.Models.Student std in Students)
+            List<Student> subStudents = new List<Student>();
+            foreach (Student std in Students)
             {
                 bool check = await _enrollmentRepository.CheckEnrollment(std.Id, model.TeacherId);
                 if (check)
@@ -137,8 +136,8 @@ namespace IShcool.Controllers
             ViewBag.QuestNum = questNum;
 
             var Students = await _studentRepository.GetAllStudentsInAcademyYear(model.Academy_Year);
-            List<The_Top_App.Models.Student> subStudents = new List<The_Top_App.Models.Student>();
-            foreach (The_Top_App.Models.Student std in Students)
+            List<Student> subStudents = new List<Student>();
+            foreach (Student std in Students)
             {
                 var check = await _enrollmentRepository.CheckEnrollment(std.Id, model.TeacherId);
                 if (check)

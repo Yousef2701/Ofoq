@@ -1,12 +1,10 @@
-﻿using IShcool.Interfaces;
-using IShcool.Models;
-using IShcool.ViewModels;
+﻿using ISchool.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace IShcool.Controllers
 {
-    public class Parent : Controller
+    public class ParentController : Controller
     {
 
         #region Dependancey injuction
@@ -18,7 +16,7 @@ namespace IShcool.Controllers
         private readonly IQuestionBanqRepository _questionBanqRepository;
         private readonly IParentRepository _parentRepository;
 
-        public Parent(IStudentRepository studentRepository,
+        public ParentController(IStudentRepository studentRepository,
                       IEnrollmentRepository enrollmentRepository,
                       ILessonRepository lessonRepository,
                       ILessonTestRepository lessonTestRepository,

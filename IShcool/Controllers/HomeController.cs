@@ -1,6 +1,4 @@
-﻿using IShcool.Interfaces;
-using IShcool.Models;
-using IShcool.ViewModels;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;

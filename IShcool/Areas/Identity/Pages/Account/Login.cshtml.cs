@@ -15,9 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using IShcool.Data;
-using IShcool.Interfaces;
-using IShcool.IRepo;
+
 
 namespace IShcool.Areas.Identity.Pages.Account
 {

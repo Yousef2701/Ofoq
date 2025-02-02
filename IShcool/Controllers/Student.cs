@@ -1,14 +1,11 @@
 ﻿using Humanizer;
-using IShcool.Interfaces;
-using IShcool.Models;
-using IShcool.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace IShcool.Controllers
 {
-    public class Student : Controller
+    public class StudentController : Controller
     {
 
         #region Dependancey injuction
@@ -25,7 +22,7 @@ namespace IShcool.Controllers
         private readonly IQuestionBanqRepository _questionBanqRepository;
         private readonly IBookRepository _bookRepository;
 
-        public Student(ILogger<HomeController> logger,
+        public StudentController(ILogger<HomeController> logger,
                               IStudentRepository studentRepository,
                               IUserRepository userRepository,
                               ISubjectRepository subjectRepository,

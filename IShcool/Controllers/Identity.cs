@@ -1,11 +1,8 @@
-﻿using IShcool.Interfaces;
-using IShcool.ViewModels;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Build.Evaluation;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
-using The_Top_App.Models;
 
 namespace IShcool.Controllers
 {

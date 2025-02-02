@@ -1,7 +1,7 @@
-using IShcool.Data;
-using IShcool.Interfaces;
-using IShcool.IRepo;
-using IShcool.Repository;
+using ArabityAuth;
+using ISchool.Core.IRepository;
+using ISchool.Core.Repository;
+using ISchool.Data.Data;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -51,6 +51,7 @@ builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<ILessonTestRepository, LessonTestRepository>();
 builder.Services.AddScoped<IParentRepository, ParentRepository>();
 builder.Services.AddScoped<ILoginManagement, LogInManagement>();
+builder.Services.AddScoped<Tools>();
 
 
 //builder.WebHost.ConfigureKestrel(options =>
