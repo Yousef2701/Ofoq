@@ -2,10 +2,19 @@
 {
     public class Tools
     {
-        public Tools()
+
+        #region Dependancey injuction
+
+        private Microsoft.AspNetCore.Hosting.IHostingEnvironment Environment;
+
+        public Tools(Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment)
         {
-            
+            Environment = _environment;
         }
+
+        #endregion
+
+
 
         #region Add Images
 
@@ -15,12 +24,12 @@
             if (imagefile == null)
             { return "avatar.png" + username; }
             string imageUrl = imagefile.FileName;
-            string uploads = Path.Combine(Environment.CurrentDirectory, "UsersImages");
+            string uploads = Path.Combine(Environment.WebRootPath, "UsersImages");
             string path = Path.Combine(uploads, username + imageUrl);
 
             if (System.IO.File.Exists(imageUrl))
             {
-                string temporary = Path.Combine(Environment.CurrentDirectory, "ImagePackups");
+                string temporary = Path.Combine(Environment.WebRootPath, "ImagePackups");
                 File.Copy(path, temporary);
                 string newFilePath = Path.Combine(path, username + imageUrl);
                 File.Move(temporary, newFilePath);
@@ -43,12 +52,12 @@
             if (imagefile == null)
             { return "avatar.png" + username; }
             string imageUrl = imagefile.FileName;
-            string uploads = Path.Combine(Environment.CurrentDirectory, "AnswersImages");
+            string uploads = Path.Combine(Environment.WebRootPath, "AnswersImages");
             string path = Path.Combine(uploads, username + imageUrl);
 
             if (System.IO.File.Exists(imageUrl))
             {
-                string temporary = Path.Combine(Environment.CurrentDirectory, "ImagePackups");
+                string temporary = Path.Combine(Environment.WebRootPath, "ImagePackups");
                 File.Copy(path, temporary);
                 string newFilePath = Path.Combine(path, username + imageUrl);
                 File.Move(temporary, newFilePath);
@@ -71,12 +80,12 @@
             if (taskFile == null)
             { return "Defult File" + username; }
             string fileUrl = taskFile.FileName;
-            string files = Path.Combine(Environment.CurrentDirectory, "Files");
+            string files = Path.Combine(Environment.WebRootPath, "Files");
             string path = Path.Combine(files, username + fileUrl);
 
             if (System.IO.File.Exists(fileUrl))
             {
-                string temporary = Path.Combine(Environment.CurrentDirectory, "ImagePackups");
+                string temporary = Path.Combine(Environment.WebRootPath, "ImagePackups");
                 File.Copy(path, temporary);
                 string newFilePath = Path.Combine(path, username + fileUrl);
                 File.Move(temporary, newFilePath);
@@ -99,12 +108,12 @@
             if (vediofile == null)
             { return "Defult User Image" + username; }
             string vedioUrl = vediofile.FileName;
-            string vedios = Path.Combine(Environment.CurrentDirectory, "Vedios");
+            string vedios = Path.Combine(Environment.WebRootPath, "Vedios");
             string path = Path.Combine(vedios, username + vedioUrl);
 
             if (System.IO.File.Exists(vedioUrl))
             {
-                string temporary = Path.Combine(Environment.CurrentDirectory, "ImagePackups");
+                string temporary = Path.Combine(Environment.WebRootPath, "ImagePackups");
                 File.Copy(path, temporary);
                 string newFilePath = Path.Combine(path, username + vedioUrl);
                 File.Move(temporary, newFilePath);
@@ -124,7 +133,7 @@
         public string UpdateImages(IFormFile imagefile, string imagename)
         {
             string imageUrl = imagefile.FileName;
-            string path = Path.Combine(Environment.CurrentDirectory, "UsersImages");
+            string path = Path.Combine(Environment.WebRootPath, "UsersImages");
             if (System.IO.File.Exists(imagename))
             {
                 System.IO.File.Delete(imagename);

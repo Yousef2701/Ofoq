@@ -6,9 +6,12 @@
         #region Dependancey injuction
 
         private readonly ApplicationDbContext _context;
-        public BookRepository(ApplicationDbContext context)
+        private Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
+
+        public BookRepository(ApplicationDbContext context,Microsoft.AspNetCore.Hosting.IHostingEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
         #endregion
@@ -23,7 +26,7 @@
             {
                 int count = _context.Books.Where(m => m.TeacherId == model.TeacherId).Count() + 1;
 
-                var file = new Tools();
+                var file = new Tools(_environment);
                 string fileUrl = file.AddTasks(model.Task_File, model.TeacherId + count);
 
                 var book = new Book

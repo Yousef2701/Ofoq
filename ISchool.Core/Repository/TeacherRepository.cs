@@ -6,10 +6,12 @@
         #region Dependancey injuction
 
         private readonly ApplicationDbContext _context;
+        private Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
 
-        public TeacherRepository(ApplicationDbContext context)
+        public TeacherRepository(ApplicationDbContext context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
         #endregion
@@ -43,7 +45,7 @@
         {
             if (model != null && id != null)
             {
-                var image = new Tools();
+                var image = new Tools(_environment);
                 string imageUrl = image.AddImages(model.ImageFile, model.Phone);
 
                 var teacher = new Teacher

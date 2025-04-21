@@ -6,10 +6,12 @@
         #region Dependancey injuction
 
         private readonly ApplicationDbContext _context;
+        private Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
 
-        public LessonRepository(ApplicationDbContext context)
+        public LessonRepository(ApplicationDbContext context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
         #endregion
@@ -26,7 +28,7 @@
 
                 var environment = Environment.GetEnvironmentVariables();
 
-                var vedio = new Tools();
+                var vedio = new Tools(_environment);
                 string vedioUrl = vedio.AddVedios(model.VedioFile, model.TeacherId + "-" + count + "-");
 
                 var lesson = new Lesson
@@ -62,16 +64,16 @@
                 {
                     var count = _context.LessonQuestions.Where(m => m.Vedio_Url == model.Vedio_Url).Count() + 1;
 
-                    var answer_1 = new Tools();
+                    var answer_1 = new Tools(_environment);
                     string answer_1_Url = answer_1.AddAnswersImages(model.Frist_Answer_File, model.Vedio_Url + "1" + count);
 
-                    var answer_2 = new Tools();
+                    var answer_2 = new Tools(_environment);
                     string answer_2_Url = answer_2.AddAnswersImages(model.Second_Answer_File, model.Vedio_Url + "2" + count);
 
-                    var answer_3 = new Tools();
+                    var answer_3 = new Tools(_environment);
                     string answer_3_Url = answer_3.AddAnswersImages(model.Third_Answer_File, model.Vedio_Url + "3" + count);
 
-                    var answer_4 = new Tools();
+                    var answer_4 = new Tools(_environment);
                     string answer_4_Url = answer_4.AddAnswersImages(model.Third_Answer_File, model.Vedio_Url + "4" + count);
 
                     var question = new LessonQuestion

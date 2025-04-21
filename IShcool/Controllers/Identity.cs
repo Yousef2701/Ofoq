@@ -268,7 +268,8 @@ namespace IShcool.Controllers
                     {
                         UserName = model.Phone + "@gmail.com",
                         Email = model.Phone + "@gmail.com",
-                        PhoneNumber = model.Phone
+                        PhoneNumber = model.Phone,
+                        EmailConfirmed=true
                     };
 
 

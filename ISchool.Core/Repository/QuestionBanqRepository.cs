@@ -7,12 +7,15 @@
 
         private readonly ApplicationDbContext _context;
         private readonly IUserRepository _userRepository;
+        private Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
 
         public QuestionBanqRepository(ApplicationDbContext context,
-                                      IUserRepository userRepository)
+                                      IUserRepository userRepository,
+                                      Microsoft.AspNetCore.Hosting.IHostingEnvironment environment)
         {
             _context = context;
             _userRepository = userRepository;
+            _environment = environment;
         }
 
         #endregion
@@ -59,16 +62,16 @@
                 {
                     int count = _context.ExamQuestions.Where(m => m.ExamTitle == model.ExamTitle).Count() + 1;
 
-                    var answer_1 = new Tools();
+                    var answer_1 = new Tools(_environment);
                     string answer_1_Url = answer_1.AddAnswersImages(model.Frist_Answer_File, model.TeacherId + model.ExamTitle + "1" + count);
 
-                    var answer_2 = new Tools();
+                    var answer_2 = new Tools(_environment);
                     string answer_2_Url = answer_2.AddAnswersImages(model.Second_Answer_File, model.TeacherId + model.ExamTitle + "2" + count);
 
-                    var answer_3 = new Tools();
+                    var answer_3 = new Tools(_environment);
                     string answer_3_Url = answer_3.AddAnswersImages(model.Third_Answer_File, model.TeacherId + model.ExamTitle + "3" + count);
 
-                    var answer_4 = new Tools();
+                    var answer_4 = new Tools(_environment);
                     string answer_4_Url = answer_4.AddAnswersImages(model.Forth_Answer_File, model.TeacherId + model.ExamTitle + "4" + count);
 
                     var question = new ExamQuestion

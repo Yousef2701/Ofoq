@@ -11,9 +11,9 @@
         public string Subject { get; set; }
 
         [Display(Name = "Teacher Phone")]
-        [StringLength(11),
-            RegularExpression(@"^01[0125][0-9]{8}$",
-            ErrorMessage = "Invalid phone number")]
+        [StringLength(11)]
+        //[RegularExpression(@"^01[0125][0-9]{8}$",
+        //ErrorMessage = "Invalid phone number")]
         public string Phone { get; set; }
 
         public bool First { get; set; } = true;
