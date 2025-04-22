@@ -1,6 +1,4 @@
-﻿
-
-var data1 = '[{ "name": "الصف الأول الثانوى", "lessons": ["عام"] }, {"name": "الصف الثاني الثانوى","lessons": ["علمي", "أدبي"]}, {"name": "الصف الثالث الثانوى", "lessons": ["أدبي", "علمي علوم","علمي رياضيات"]}]';
+﻿var data1 = '[{ "name": "الصف الأول الثانوى", "lessons": ["عام"] }, {"name": "الصف الثاني الثانوى","lessons": ["علمي", "أدبي"]}, {"name": "الصف الثالث الثانوى", "lessons": ["أدبي", "علمي علوم","علمي رياضيات"]}]';
 var data = JSON.parse(data1);
 // Get the lesson select element
 var lessonSelect = document.getElementById("lessonSelect");

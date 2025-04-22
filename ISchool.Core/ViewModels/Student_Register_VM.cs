@@ -7,7 +7,7 @@
         public string Name { get; set; }
 
         [Display(Name = "Student Phone")]
-        [StringLength(11)]
+        [StringLength(10)]
         //[RegularExpression(@"^01[0125][0-9]{8}$",
         //ErrorMessage = "Invalid phone number")]
         public string Phone { get; set; }
@@ -21,7 +21,7 @@
 
         [Required]
         [Display(Name = "Department")]
-        [StringLength(30, MinimumLength = 4, ErrorMessage = "Department Must Be More Than 4 Caracters & Less Than 30 Caracters")]
+        [StringLength(30, MinimumLength = 2, ErrorMessage = "Department Must Be More Than 4 Caracters & Less Than 30 Caracters")]
         [RegularExpression("^[ا-ي ء أ ؤ]+$*[ؤ ء أ ا-ي]+[ؤ ء أ ا-ي]*$",
             ErrorMessage = "Name Must Contain only Letters")]
         public string Department { get; set; }
@@ -35,9 +35,9 @@
 
         [AllowNull]
         [Display(Name = "Parent Phone")]
-        [StringLength(11),
-            RegularExpression(@"^01[0125][0-9]{8}$",
-            ErrorMessage = "Invalid phone number")]
+        [StringLength(10)]
+        //[RegularExpression(@"^01[0125][0-9]{8}$",
+        //ErrorMessage = "Invalid phone number")]
         public string? Par_Phone { get; set; }
 
         [Required]

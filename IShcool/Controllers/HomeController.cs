@@ -55,67 +55,59 @@ namespace IShcool.Controllers
             ViewBag.Teacher = teacher;
 
             string sorce = "";
-            if (teacher.Subject == "لغـة عـربيـة")
+            if (teacher.Subject == "اللغة العربية")
             {
-                sorce = "/Subjects/Arabic.png";
+                sorce = "Arabic.png";
             }
-            else if (teacher.Subject == "لغـة انجليـزيـة")
+            else if (teacher.Subject == "اللغة الانجليزية")
             {
-                sorce = "/Subjects/English.png";
+                sorce = "English.png";
             }
-            else if (teacher.Subject == "ريـاضيـات")
+            else if (teacher.Subject == "الرياضيات")
             {
-                sorce = "/Subjects/Math.png";
+                sorce = "Math.png";
             }
-            else if (teacher.Subject == "كيـميـاء")
+            else if (teacher.Subject == "الكيمياء")
             {
-                sorce = "/Subjects/chimi.png";
+                sorce = "chimi.png";
             }
-            else if (teacher.Subject == "فيـزيـاء")
+            else if (teacher.Subject == "الفيزياء")
             {
-                sorce = "/Subjects/physics.png";
+                sorce = "physics.png";
             }
-            else if (teacher.Subject == "أحـيـاء")
+            else if (teacher.Subject == "الأحياء")
             {
-                sorce = "/Subjects/Bio.png";
+                sorce = "Bio.png";
             }
-            else if (teacher.Subject == "تـاريـخ")
+            else if (teacher.Subject == "التاريخ")
             {
-                sorce = "/Subjects/History.png";
+                sorce = "History.png";
             }
-            else if (teacher.Subject == "جغـرافيـا")
+            else if (teacher.Subject == "الجغرافيا")
             {
-                sorce = "/Subjects/maps.png";
+                sorce = "maps.png";
             }
-            else if (teacher.Subject == "فـلسفـة" || teacher.Subject == "فـلسفـة و منطـق")
+            else if (teacher.Subject == "الفلسفة و المنطق")
             {
-                sorce = "/Subjects/philo1.png";
+                sorce = "philo1.png";
             }
-            else if (teacher.Subject == "ريـاضيـات تطبيقيـة")
+            else if (teacher.Subject == "علم النفس و الاجتماع")
             {
-                sorce = "/Subjects/AppliedM.png";
+                sorce = "Adabi2.png";
             }
-            else if (teacher.Subject == "ريـاضيـات بحتـة")
+            else if (teacher.Subject == "الجيولوجيا")
             {
-                sorce = "/Subjects/Bahata.png";
+                sorce = "Giolo.png";
             }
-            else if (teacher.Subject == "علـم نفـس" || teacher.Subject == "علـم الـنفـس و الاجـتمـاع")
+            else if (teacher.Subject == "اللغة الفرنسية")
             {
-                sorce = "/Subjects/Adabi2.png";
+                sorce = "Frensh.png";
             }
-            else if (teacher.Subject == "جيـولـوجيـا")
+            else if (teacher.Subject == "اللغة الألمانية")
             {
-                sorce = "/Subjects/Giolo.png";
+                sorce = "German.png";
             }
-            else if (teacher.Subject == "اللغـة الفرنسيـة")
-            {
-                sorce = "/Subjects/Frensh.png";
-            }
-            else if (teacher.Subject == "اللغـة الألمـانيـة")
-            {
-                sorce = "/Subjects/German.png";
-            }
-            else if (teacher.Subject == "اللغـة الإيطـاليـة")
+            else if (teacher.Subject == "اللغة الايطالية")
             {
                 sorce = "/Subjects/Italy.png";
             }

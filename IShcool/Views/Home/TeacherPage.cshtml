@@ -104,40 +104,40 @@
                 @if (@ViewBag.Teacher.First == true & @ViewBag.Teacher.Second == true & @ViewBag.Teacher.Third == true)
                 {
                     <div class="card">
-                        <img src="@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
+                        <img src="~/Subjects/@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
                         <div class="card-body">
                             <h5 class="card-title">@ViewBag.Teacher.Subject</h5>
                             <p class="card-text">كورس @ViewBag.Teacher.Subject للصف الاول الثانوي.</p>
                             <h4 class="card-price">السعر: 25 جنيه</h4>
                             <form asp-action="Course_Tetails">
                                 <input hidden asp-for="TeacherId" value="@ViewBag.Teacher.Id" />
-                                <input hidden asp-for="Academy_Year" value="أولى ثانوي" />
+                                <input hidden asp-for="Academy_Year" value="الصف الأول الثانوى" />
                                 <button class="card-button">محتويات الكورس</button>
                             </form>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
+                        <img src="~/Subjects/@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
                         <div class="card-body">
                             <h5 class="card-title">@ViewBag.Teacher.Subject</h5>
                             <p class="card-text">كورس @ViewBag.Teacher.Subject للصف الثاني الثانوي.</p>
                             <h4 class="card-price">السعر: 35 جنيه</h4>
                             <form asp-action="Course_Tetails">
                                 <input hidden asp-for="TeacherId" value="@ViewBag.Teacher.Id" />
-                                <input hidden asp-for="Academy_Year" value="ثانية ثانوي" />
+                                <input hidden asp-for="Academy_Year" value="الصف الثاني الثانوى" />
                                 <button class="card-button">محتويات الكورس</button>
                             </form>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
+                        <img src="~/Subjects/@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
                         <div class="card-body">
                             <h5 class="card-title">@ViewBag.Teacher.Subject</h5>
                             <p class="card-text">كورس @ViewBag.Teacher.Subject للصف الثالث الثانوي.</p>
                             <h4 class="card-price">السعر: 50 جنيه</h4>
                             <form asp-action="Course_Tetails">
                                 <input hidden asp-for="TeacherId" value="@ViewBag.Teacher.Id" />
-                                <input hidden asp-for="Academy_Year" value="ثالثة ثانوي" />
+                                <input hidden asp-for="Academy_Year" value="الصف الثالث الثانوى" />
                                 <button class="card-button">محتويات الكورس</button>
                             </form>
                         </div>
@@ -146,27 +146,27 @@
                 else  @if (@ViewBag.Teacher.First == true & @ViewBag.Teacher.Second == true & @ViewBag.Teacher.Third == false)
                 {
                     <div class="card">
-                        <img src="@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
+                        <img src="~/Subjects/@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
                         <div class="card-body">
                             <h5 class="card-title">@ViewBag.Teacher.Subject</h5>
                             <p class="card-text">كورس @ViewBag.Teacher.Subject للصف الاول الثانوي.</p>
                             <h4 class="card-price">السعر: 25 جنيه</h4>
                             <form asp-action="Course_Tetails">
                                 <input hidden asp-for="TeacherId" value="@ViewBag.Teacher.Id" />
-                                <input hidden asp-for="Academy_Year" value="أولى ثانوي" />
+                                <input hidden asp-for="Academy_Year" value="الصف الأول الثانوى" />
                                 <button class="card-button">محتويات الكورس</button>
                             </form>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
+                        <img src="~/Subjects/@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
                         <div class="card-body">
                             <h5 class="card-title">@ViewBag.Teacher.Subject</h5>
                             <p class="card-text">كورس @ViewBag.Teacher.Subject للصف الثاني الثانوي.</p>
                             <h4 class="card-price">السعر: 35 جنيه</h4>
                             <form asp-action="Course_Tetails">
                                 <input hidden asp-for="TeacherId" value="@ViewBag.Teacher.Id" />
-                                <input hidden asp-for="Academy_Year" value="ثانية ثانوي" />
+                                <p class="card-text">كورس @ViewBag.Teacher.Subject للصف الثاني الثانوي.</p>
                                 <button class="card-button">محتويات الكورس</button>
                             </form>
                         </div>
@@ -175,27 +175,27 @@
                 else  @if (@ViewBag.Teacher.First == true & @ViewBag.Teacher.Second == false & @ViewBag.Teacher.Third == true)
                 {
                     <div class="card">
-                        <img src="@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
+                        <img src="~/Subjects/@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
                         <div class="card-body">
                             <h5 class="card-title">@ViewBag.Teacher.Subject</h5>
                             <p class="card-text">كورس @ViewBag.Teacher.Subject للصف الاول الثانوي.</p>
                             <h4 class="card-price">السعر: 25 جنيه</h4>
                             <form asp-action="Course_Tetails">
                                 <input hidden asp-for="TeacherId" value="@ViewBag.Teacher.Id" />
-                                <input hidden asp-for="Academy_Year" value="أولى ثانوي" />
+                                <input hidden asp-for="Academy_Year" value="الصف الأول الثانوى" />
                                 <button class="card-button">محتويات الكورس</button>
                             </form>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
+                        <img src="~/Subjects/@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
                         <div class="card-body">
                             <h5 class="card-title">@ViewBag.Teacher.Subject</h5>
                             <p class="card-text">كورس @ViewBag.Teacher.Subject للصف الثالث الثانوي.</p>
                             <h4 class="card-price">السعر: 50 جنيه</h4>
                             <form asp-action="Course_Tetails">
                                 <input hidden asp-for="TeacherId" value="@ViewBag.Teacher.Id" />
-                                <input hidden asp-for="Academy_Year" value="ثالثة ثانوي" />
+                                <input hidden asp-for="Academy_Year" value="الصف الثالث الثانوى" />
                                 <button class="card-button">محتويات الكورس</button>
                             </form>
                         </div>
@@ -204,27 +204,27 @@
                 else  @if (@ViewBag.Teacher.First == false & @ViewBag.Teacher.Second == true & @ViewBag.Teacher.Third == true)
                 {
                     <div class="card">
-                        <img src="@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
+                        <img src="~/Subjects/@ViewBag.Src" class="card-img-top" alt="" />
                         <div class="card-body">
                             <h5 class="card-title">@ViewBag.Teacher.Subject</h5>
                             <p class="card-text">كورس @ViewBag.Teacher.Subject للصف الثاني الثانوي.</p>
                             <h4 class="card-price">السعر: 35 جنيه</h4>
                             <form asp-action="Course_Tetails">
                                 <input hidden asp-for="TeacherId" value="@ViewBag.Teacher.Id" />
-                                <input hidden asp-for="Academy_Year" value="ثانية ثانوي" />
+                                <p class="card-text">كورس @ViewBag.Teacher.Subject للصف الثاني الثانوي.</p>
                                 <button class="card-button">محتويات الكورس</button>
                             </form>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
+                        <img src="~/Subjects/@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
                         <div class="card-body">
                             <h5 class="card-title">@ViewBag.Teacher.Subject</h5>
                             <p class="card-text">كورس @ViewBag.Teacher.Subject للصف الثالث الثانوي.</p>
                             <h4 class="card-price">السعر: 50 جنيه</h4>
                             <form asp-action="Course_Tetails">
                                 <input hidden asp-for="TeacherId" value="@ViewBag.Teacher.Id" />
-                                <input hidden asp-for="Academy_Year" value="ثالثة ثانوي" />
+                                <input hidden asp-for="Academy_Year" value="الصف الثالث الثانوى" />
                                 <button class="card-button">محتويات الكورس</button>
                             </form>
                         </div>
@@ -233,14 +233,14 @@
                 else  @if (@ViewBag.Teacher.First == true & @ViewBag.Teacher.Second == false & @ViewBag.Teacher.Third == false)
                 {
                     <div class="card">
-                        <img src="@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
+                        <img src="~/Subjects/@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
                         <div class="card-body">
                             <h5 class="card-title">@ViewBag.Teacher.Subject</h5>
                             <p class="card-text">كورس @ViewBag.Teacher.Subject للصف الاول الثانوي.</p>
                             <h4 class="card-price">السعر: 25 جنيه</h4>
                             <form asp-action="Course_Tetails">
                                 <input hidden asp-for="TeacherId" value="@ViewBag.Teacher.Id" />
-                                <input hidden asp-for="Academy_Year" value="أولى ثانوي" />
+                                <input hidden asp-for="Academy_Year" value="الصف الأول الثانوى" />
                                 <button class="card-button">محتويات الكورس</button>
                             </form>
                         </div>
@@ -249,14 +249,14 @@
                 else  @if (@ViewBag.Teacher.First == false & @ViewBag.Teacher.Second == true & @ViewBag.Teacher.Third == false)
                 {
                     <div class="card">
-                        <img src="@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
+                        <img src="~/Subjects/@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
                         <div class="card-body">
                             <h5 class="card-title">@ViewBag.Teacher.Subject</h5>
                             <p class="card-text">كورس @ViewBag.Teacher.Subject للصف الثاني الثانوي.</p>
                             <h4 class="card-price">السعر: 35 جنيه</h4>
                             <form asp-action="Course_Tetails">
                                 <input hidden asp-for="TeacherId" value="@ViewBag.Teacher.Id" />
-                                <input hidden asp-for="Academy_Year" value="ثانية ثانوي" />
+                                <p class="card-text">كورس @ViewBag.Teacher.Subject للصف الثاني الثانوي.</p>
                                 <button class="card-button">محتويات الكورس</button>
                             </form>
                         </div>
@@ -265,14 +265,14 @@
                 else  @if (@ViewBag.Teacher.First == false & @ViewBag.Teacher.Second == false & @ViewBag.Teacher.Third == true)
                 {
                     <div class="card">
-                        <img src="@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
+                        <img src="~/Subjects/@ViewBag.Src" class="card-img-top" alt="صورة المدرس" />
                         <div class="card-body">
                             <h5 class="card-title">@ViewBag.Teacher.Subject</h5>
                             <p class="card-text">كورس @ViewBag.Teacher.Subject للصف الثالث الثانوي.</p>
                             <h4 class="card-price">السعر: 50 جنيه</h4>
                             <form asp-action="Course_Tetails">
                                 <input hidden asp-for="TeacherId" value="@ViewBag.Teacher.Id" />
-                                <input hidden asp-for="Academy_Year" value="ثالثة ثانوي" />
+                                <input hidden asp-for="Academy_Year" value="الصف الثالث الثانوى" />
                                 <button class="card-button">محتويات الكورس</button>
                             </form>
                         </div>
