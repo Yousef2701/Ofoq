@@ -102,27 +102,27 @@
 
         #region Add Vedios
 
-        public string AddVedios(IFormFile vediofile, string username)
+        public string AddVedios(IFormFile vediofile, string phone, string title)
         {
 
             if (vediofile == null)
-            { return "Defult User Image" + username; }
+            { return "Defult User Image" + phone; }
             string vedioUrl = vediofile.FileName;
             string vedios = Path.Combine(Environment.WebRootPath, "Vedios");
-            string path = Path.Combine(vedios, username + vedioUrl);
+            string path = Path.Combine(vedios, phone + title + vedioUrl);
 
             if (System.IO.File.Exists(vedioUrl))
             {
                 string temporary = Path.Combine(Environment.WebRootPath, "ImagePackups");
                 File.Copy(path, temporary);
-                string newFilePath = Path.Combine(path, username + vedioUrl);
+                string newFilePath = Path.Combine(path, phone + title + vedioUrl);
                 File.Move(temporary, newFilePath);
             }
             else
             { vediofile.CopyTo(new FileStream(path, FileMode.Create)); }
 
 
-            return username + vedioUrl;
+            return phone + title + vedioUrl;
         }
 
         #endregion

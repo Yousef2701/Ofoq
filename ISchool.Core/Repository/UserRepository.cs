@@ -108,5 +108,21 @@ namespace ISchool.Core.Repository
 
         #endregion
 
+
+        #region Get User Phone By Id
+
+        public async Task<string> GetUserPhoneById(string id)
+        {
+            if(id != null)
+            {
+                var user = _context.Users.Find(id);
+                if (user != null)
+                    return user.PhoneNumber;
+            }
+            return string.Empty;
+        }
+
+        #endregion
+
     }
 }

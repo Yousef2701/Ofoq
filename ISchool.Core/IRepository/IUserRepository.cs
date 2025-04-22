@@ -11,5 +11,7 @@
         public Task<string> PendingUser(string id);
 
         public Task<string> ActivingUser(string id);
+
+        public Task<string> GetUserPhoneById(string id);
     }
 }

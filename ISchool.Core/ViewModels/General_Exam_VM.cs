@@ -10,7 +10,7 @@
         public string TeacherId { get; set; }
 
         [Required]
-        [StringLength(18, MinimumLength = 4, ErrorMessage = "Academy_Year Must Be More Than 4 Caracters & Less Than 18 Caracters")]
+        [StringLength(50, MinimumLength = 4, ErrorMessage = "Academy_Year Must Be More Than 4 Caracters & Less Than 18 Caracters")]
         public string Academy_Year { get; set; }
 
         [Required]

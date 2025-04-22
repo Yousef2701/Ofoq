@@ -7,11 +7,15 @@
 
         private readonly ApplicationDbContext _context;
         private Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
+        private readonly IUserRepository _userRepository;
 
-        public LessonRepository(ApplicationDbContext context, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment)
+        public LessonRepository(ApplicationDbContext context,
+                                Microsoft.AspNetCore.Hosting.IHostingEnvironment environment,
+                                IUserRepository userRepository)
         {
             _context = context;
             _environment = environment;
+            _userRepository = userRepository;
         }
 
         #endregion
@@ -24,12 +28,10 @@
         {
             if (model != null)
             {
-                int count = _context.Lessons.Where(m => m.TeacherId == model.TeacherId).Count() + 1;
-
                 var environment = Environment.GetEnvironmentVariables();
 
                 var vedio = new Tools(_environment);
-                string vedioUrl = vedio.AddVedios(model.VedioFile, model.TeacherId + "-" + count + "-");
+                string vedioUrl = vedio.AddVedios(model.VedioFile, await _userRepository.GetUserPhoneById(model.TeacherId) ,model.Title);
 
                 var lesson = new Lesson
                 {
